@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="380" viewBox="0 0 660 380" fill="none" aria-label="Três cartas colecionáveis estilizadas em leque">
+  <g opacity=".92" stroke-linejoin="round">
+    <g transform="translate(275 92) rotate(19 90 140)"><rect x="13" y="14" width="176" height="244" rx="21" stroke="#A7CDEF" stroke-width="6"/><rect x="29" y="30" width="144" height="213" rx="14" stroke="#CDE4F9" stroke-width="4"/></g>
+    <g transform="translate(290 56) rotate(7 90 140)"><rect x="13" y="14" width="176" height="244" rx="21" stroke="#3D7DCA" stroke-width="6"/><rect x="29" y="30" width="144" height="213" rx="14" stroke="#A7CDEF" stroke-width="4"/></g>
+    <g transform="translate(330 29) rotate(-8 90 140)"><rect x="13" y="14" width="176" height="244" rx="21" stroke="#FFCB05" stroke-width="7"/><rect x="29" y="30" width="144" height="213" rx="14" stroke="#FFD965" stroke-width="4"/></g>
+  </g>
+</svg>

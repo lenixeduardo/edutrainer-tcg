@@ -1,0 +1,37 @@
+import assert from "node:assert/strict";
+import { execFileSync } from "node:child_process";
+import { mkdtempSync, rmSync } from "node:fs";
+import { tmpdir } from "node:os";
+import path from "node:path";
+import { createRequire } from "node:module";
+const out = mkdtempSync(path.join(tmpdir(), "edutrainer-test-"));
+const root = path.resolve(import.meta.dirname, "..");
+try {
+  execFileSync("tsc", ["src/lib/business.ts", "--target", "ES2022", "--module", "commonjs", "--moduleResolution", "node", "--strict", "--outDir", out], { cwd: root, stdio: "pipe" });
+  const require = createRequire(import.meta.url);
+  const { money, normalizePhone, updateCart, reconcileCart, cartCount, cartTotal, whatsAppMessage, whatsAppUrl, parsePrice } = require(path.join(out, "business.js"));
+  const product = { id: "a", name: "Squirtle", set_name: "Base Set", card_number: "63/102", condition: "NM", language: "Inglês", finish: "Normal", price_cents: 4900, stock: 2, is_published: true };
+  const sold = { ...product, id: "b", stock: 0 };
+  assert.equal(money(4900), "R$ 49,00");
+  assert.equal(normalizePhone("+55 (11) 99999-9999"), "5511999999999");
+  assert.equal(normalizePhone("abc"), null);
+  assert.equal(parsePrice("1.299,90"), 129990);
+  assert.equal(parsePrice("-20"), null);
+  assert.equal(parsePrice("1,234"), null);
+  assert.deepEqual(updateCart({}, product, 1), { a: 1 });
+  assert.deepEqual(updateCart({ a: 2 }, product, 1), { a: 2 });
+  assert.deepEqual(updateCart({ a: 1 }, product, -1), {});
+  assert.deepEqual(reconcileCart({ a: 3, b: 1, c: 4 }, [product, sold]), { a: 2 });
+  assert.equal(cartTotal({ a: 2 }, [product]), 9800);
+  assert.equal(cartCount({ a: 2 }), 2);
+  const message = whatsAppMessage({ a: 2 }, [product]);
+  assert.ok(message.includes("2x Squirtle"));
+  assert.ok(message.includes("R$ 98,00"));
+  assert.ok(message.includes("Frete não incluído"));
+  const url = whatsAppUrl("5511999999999", message);
+  assert.ok(url?.startsWith("https://wa.me/5511999999999?text="));
+  assert.equal(decodeURIComponent(url.split("text=")[1]), message);
+  assert.equal(whatsAppUrl("sem-telefone", message), null);
+  assert.equal(whatsAppUrl("5511999999999", ""), null);
+  console.log("13 verificações de lógica concluídas com sucesso.");
+} finally { rmSync(out, { recursive: true, force: true }); }

@@ -1,0 +1,239 @@
+{
+  "brand": "EduTrainer TCG",
+  "reference": "assets/reference/mockup-aprovado.jpg",
+  "type": "approved-white-mode-kit",
+  "assets": [
+    {
+      "path": "app/public/brand/favicon.svg",
+      "bytes": 434,
+      "sha256": "59c55c16b39f1cb1d854420e85cda1e04c3f08944cd8c1e7704f2ddf6a7848c2"
+    },
+    {
+      "path": "app/public/brand/logo-horizontal.svg",
+      "bytes": 862,
+      "sha256": "e0e326945fa5be4bca3271ecbb6a20cb3ad42122c979967a69b81562510ccafd"
+    },
+    {
+      "path": "app/public/brand/logo-mark.svg",
+      "bytes": 568,
+      "sha256": "a59f3b50adfc97456bee2bc41c60a3c33d928fc1644979836ba5b38167bad90f"
+    },
+    {
+      "path": "app/public/cards/shiny/charmander-109-091-back.webp",
+      "bytes": 33536,
+      "sha256": "5724a8f922ded816c86ff8909ac1aed188744b7815c948e95b0a4bbb72cf98c4",
+      "size_px": [
+        245,
+        388
+      ]
+    },
+    {
+      "path": "app/public/cards/shiny/charmander-109-091-front.webp",
+      "bytes": 39220,
+      "sha256": "a025df1ddc8bc17cd104dbe73908ba94b2788d4bf099ef4b9521a3bd008da5af",
+      "size_px": [
+        255,
+        387
+      ]
+    },
+    {
+      "path": "app/public/cards/shiny/charmeleon-110-091-back.webp",
+      "bytes": 30940,
+      "sha256": "70fafcd36c0c95d0035c55c81b55acb82f319bc7fe72826334f9b9485035103f",
+      "size_px": [
+        237,
+        364
+      ]
+    },
+    {
+      "path": "app/public/cards/shiny/charmeleon-110-091-front.webp",
+      "bytes": 33082,
+      "sha256": "c24a413dd92c8f7ea1fd4dc44026d7316b393d72118f51f2e40991827af805fd",
+      "size_px": [
+        245,
+        361
+      ]
+    },
+    {
+      "path": "app/public/cards/shiny/ditto-201-091-back.webp",
+      "bytes": 32636,
+      "sha256": "5b90fc293b8a6d6874417710fde1ca082cff88ecf264103915615d71e4a06960",
+      "size_px": [
+        238,
+        388
+      ]
+    },
+    {
+      "path": "app/public/cards/shiny/ditto-201-091-front.webp",
+      "bytes": 38806,
+      "sha256": "da32be25f933320440e49963b4007c136a96d775e5ec32e8664ba4fae4eca142",
+      "size_px": [
+        257,
+        386
+      ]
+    },
+    {
+      "path": "app/public/cards/shiny/lucario-174-091-back.webp",
+      "bytes": 31938,
+      "sha256": "5740fde56aa6d7642972172295cae9ca392e25c78abb4fe4748588e47defab99",
+      "size_px": [
+        238,
+        387
+      ]
+    },
+    {
+      "path": "app/public/cards/shiny/lucario-174-091-front.webp",
+      "bytes": 42660,
+      "sha256": "6c2e5866053677f5e03890a6c9e75457de577419c723a30e7edaa2eb0a1e9108",
+      "size_px": [
+        259,
+        387
+      ]
+    },
+    {
+      "path": "app/public/cards/shiny/oddish-092-091-back.webp",
+      "bytes": 31988,
+      "sha256": "5cd64f6ac7341ea0763e11944e78f881c06fd81b2b008b2bd1d731c99e45d474",
+      "size_px": [
+        235,
+        374
+      ]
+    },
+    {
+      "path": "app/public/cards/shiny/oddish-092-091-front.webp",
+      "bytes": 33240,
+      "sha256": "674dabafbc8bfcd975001b823052de5ca655dcce6d026404306d0430f1816736",
+      "size_px": [
+        253,
+        373
+      ]
+    },
+    {
+      "path": "app/public/cards/shiny/pikachu-131-091-back.webp",
+      "bytes": 30424,
+      "sha256": "170cfd34d75053d5618c0ac026697c6fa03327f26429ed3d14d54074c01c3297",
+      "size_px": [
+        233,
+        364
+      ]
+    },
+    {
+      "path": "app/public/cards/shiny/pikachu-131-091-front.webp",
+      "bytes": 29586,
+      "sha256": "89fc509847b536e3c6447d7222a963d89ccbdea63c23a4f63c3de9834f3bc7a6",
+      "size_px": [
+        247,
+        362
+      ]
+    },
+    {
+      "path": "app/public/cards/shiny/riolu-173-091-back.webp",
+      "bytes": 31994,
+      "sha256": "aa910b9a6c11069d5faae1fdb1dfc94e74724f3108870cc903da2457608b7917",
+      "size_px": [
+        236,
+        370
+      ]
+    },
+    {
+      "path": "app/public/cards/shiny/riolu-173-091-front.webp",
+      "bytes": 35664,
+      "sha256": "04b868794ffba50132c3ad310a5d491d94af1645049d9d2299be6554f6e6cccf",
+      "size_px": [
+        252,
+        371
+      ]
+    },
+    {
+      "path": "app/public/cards/shiny/slowpoke-116-091-back.webp",
+      "bytes": 32508,
+      "sha256": "0174d8b5ee17622bbc03959779abcc7d834350c6b7314399047bb9e9967c71dd",
+      "size_px": [
+        244,
+        387
+      ]
+    },
+    {
+      "path": "app/public/cards/shiny/slowpoke-116-091-front.webp",
+      "bytes": 37436,
+      "sha256": "370b04dc4208fde54c441c2ecb168e7bc3ebc28df05fb0a607a2396f449c8832",
+      "size_px": [
+        255,
+        387
+      ]
+    },
+    {
+      "path": "app/public/cards/shiny/sneasel-182-091-back.webp",
+      "bytes": 32274,
+      "sha256": "500876f8d6c95fcf74c111d2120b6907fb635147f44d1f9b546036e406bf7ad9",
+      "size_px": [
+        239,
+        371
+      ]
+    },
+    {
+      "path": "app/public/cards/shiny/sneasel-182-091-front.webp",
+      "bytes": 37032,
+      "sha256": "2b74d2dbfb283aff22a2ac632d16a4442ee8bae6104d61919dc957f78a47b95f",
+      "size_px": [
+        251,
+        371
+      ]
+    },
+    {
+      "path": "app/public/cards/shiny/snorlax-202-091-back.webp",
+      "bytes": 31478,
+      "sha256": "55c62c7dd7d8b39680f08dffb0ea94edfa6c6db422663d3f9f5de7b5d55e7c4b",
+      "size_px": [
+        239,
+        366
+      ]
+    },
+    {
+      "path": "app/public/cards/shiny/snorlax-202-091-front.webp",
+      "bytes": 32362,
+      "sha256": "93cd4552485bba18978ed8f2351a4f33f880cdbd15c14df57b8bf6842f346365",
+      "size_px": [
+        244,
+        367
+      ]
+    },
+    {
+      "path": "app/public/cards/shiny/zapdos-japones-foto-original.webp",
+      "bytes": 157984,
+      "sha256": "8065a0a50d2e0b23198d84f70cd68935c8b9d3143abe590b304e62ef959c33e6",
+      "size_px": [
+        678,
+        938
+      ]
+    },
+    {
+      "path": "app/public/cards/shiny/zapdos-shiny-100-100-back.webp",
+      "bytes": 30674,
+      "sha256": "92acd318cec3f00318884be96638ee233ecaa87ea75285fe961788a42a98bff6",
+      "size_px": [
+        234,
+        367
+      ]
+    },
+    {
+      "path": "app/public/cards/shiny/zapdos-shiny-100-100-front.webp",
+      "bytes": 42138,
+      "sha256": "62748acf4b4b49eb23fa3374a6a689825062953f9e4c5c080d59a00a38556dc5",
+      "size_px": [
+        249,
+        367
+      ]
+    },
+    {
+      "path": "app/public/illustrations/empty-cart.svg",
+      "bytes": 575,
+      "sha256": "04e86de87f3dbeb846c5e0a1e7b40e711bf9a2241b4b05c4428a0d315eb2c616"
+    },
+    {
+      "path": "app/public/illustrations/hero-card-outlines.svg",
+      "bytes": 927,
+      "sha256": "e2cfc908f24b641d51a5b2f04101d84abe3e30c77b6c8fece2a1455d710d7939"
+    }
+  ]
+}

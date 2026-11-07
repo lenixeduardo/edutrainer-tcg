@@ -1,0 +1,26 @@
+{
+  "name": "edutrainer-tcg",
+  "version": "0.1.1",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test:logic": "node tests/business.test.mjs",
+    "test:seed": "node tests/shiny-seed.test.mjs"
+  },
+  "dependencies": {
+    "next": "16.4.5",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "lucide-react": "1.61.0",
+    "@supabase/supabase-js": "2.119.0"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "@types/node": "22.15.30",
+    "@types/react": "19.2.0",
+    "@types/react-dom": "19.2.0"
+  }
+}

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 72 72" fill="none" aria-label="Símbolo EduTrainer TCG">
+  <rect x="11" y="15" width="34" height="44" rx="4" transform="rotate(-13 11 15)" stroke="#FFCB05" stroke-width="4"/>
+  <rect x="19" y="13" width="34" height="44" rx="4" transform="rotate(-5 19 13)" fill="#FFFFFF" stroke="#FFCB05" stroke-width="4"/>
+  <rect x="26" y="14" width="32" height="43" rx="4" stroke="#FFCB05" stroke-width="4"/>
+  <path d="M33 25h18M33 32h12" stroke="#3D7DCA" stroke-width="3" stroke-linecap="round"/>
+</svg>

@@ -8,7 +8,8 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "test:logic": "node tests/business.test.mjs",
-    "test:seed": "node tests/shiny-seed.test.mjs"
+    "test:seed": "node tests/shiny-seed.test.mjs",
+    "test:delivery1": "node --test tests/delivery-one.test.mjs"
   },
   "dependencies": {
     "next": "16.4.5",

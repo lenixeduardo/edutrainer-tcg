@@ -1,7 +1,7 @@
 [
   {
     "slug": "zapdos-shiny",
-    "name": "Zapdos Shiny",
+    "name": "Zapdos LV.30",
     "card_number": "100/100",
     "price_cents": 39990,
     "front_url": "/cards/shiny/zapdos-japones-foto-original.webp",
@@ -22,7 +22,10 @@
     "image_origin": "front: direct crop from owner-supplied Japanese Zapdos photograph; back: image from montage (not physical back photo)",
     "id": "944a109e-b87d-50ff-9f8f-7d71c4e1d20e",
     "front_origin_image": "cba6d523-cce0-4761-a0bb-9252d4d68f47(1).jpeg",
-    "back_origin_image": "D7C2B53F-7A1B-4B9D-B3D2-A5220B4070B5.jpeg"
+    "back_origin_image": "D7C2B53F-7A1B-4B9D-B3D2-A5220B4070B5.jpeg",
+    "set_name": "Beat of the Frontier (Pt3)",
+    "rarity": "Shiny",
+    "language": "Japonês"
   },
   {
     "slug": "snorlax",
@@ -45,7 +48,10 @@
       571
     ],
     "image_origin": "Uploaded card scan/photograph; cropped and interpolated to 1200×1680 px. Intrinsic detail unchanged. Condition NM reported by seller.",
-    "id": "74d74dbf-7b5b-5065-86f6-c7b78e646195"
+    "id": "74d74dbf-7b5b-5065-86f6-c7b78e646195",
+    "set_name": "Paldean Fates",
+    "language": "Inglês",
+    "rarity": "Shiny Rare"
   },
   {
     "slug": "pikachu",
@@ -68,7 +74,10 @@
       1129
     ],
     "image_origin": "Uploaded card scan/photograph; cropped and interpolated to 1200×1680 px. Intrinsic detail unchanged. Condition NM reported by seller.",
-    "id": "960bf706-0aeb-57f3-bb47-c4fa41056c54"
+    "id": "960bf706-0aeb-57f3-bb47-c4fa41056c54",
+    "set_name": "Paldean Fates",
+    "language": "Inglês",
+    "rarity": "Shiny Rare"
   },
   {
     "slug": "charmeleon",
@@ -91,7 +100,10 @@
       1129
     ],
     "image_origin": "cropped from user-supplied montage; not independently verified photographs",
-    "id": "06ed863f-2bd9-5edd-ac35-7a26f20d08eb"
+    "id": "06ed863f-2bd9-5edd-ac35-7a26f20d08eb",
+    "set_name": "Destinos de Paldea",
+    "language": "Português",
+    "rarity": "Rara Shiny"
   },
   {
     "slug": "lucario",
@@ -114,7 +126,10 @@
       586
     ],
     "image_origin": "Uploaded card scan/photograph; cropped and interpolated to 1200×1680 px. Intrinsic detail unchanged. Condition NM reported by seller.",
-    "id": "bc3506d4-e232-57ee-bf0f-dbf67d1d1637"
+    "id": "bc3506d4-e232-57ee-bf0f-dbf67d1d1637",
+    "set_name": "Paldean Fates",
+    "language": "Inglês",
+    "rarity": "Shiny Rare"
   },
   {
     "slug": "charmander",
@@ -137,7 +152,10 @@
       587
     ],
     "image_origin": "Uploaded card scan/photograph; cropped and interpolated to 1200×1680 px. Intrinsic detail unchanged. Condition NM reported by seller.",
-    "id": "031739e1-9cf1-523d-89af-993c179b7241"
+    "id": "031739e1-9cf1-523d-89af-993c179b7241",
+    "set_name": "Paldean Fates",
+    "language": "Inglês",
+    "rarity": "Shiny Rare"
   },
   {
     "slug": "ditto",
@@ -160,7 +178,10 @@
       1162
     ],
     "image_origin": "cropped from user-supplied montage; not independently verified photographs",
-    "id": "47b14061-e1e7-5e0b-bff8-48e36efd3c34"
+    "id": "47b14061-e1e7-5e0b-bff8-48e36efd3c34",
+    "set_name": "Destinos de Paldea",
+    "language": "Português",
+    "rarity": "Rara Shiny"
   },
   {
     "slug": "slowpoke",
@@ -183,7 +204,10 @@
       1162
     ],
     "image_origin": "Uploaded card scan/photograph; cropped and interpolated to 1200×1680 px. Intrinsic detail unchanged. Condition NM reported by seller.",
-    "id": "cfd51a45-2f1e-525d-a49b-0cf270066f28"
+    "id": "cfd51a45-2f1e-525d-a49b-0cf270066f28",
+    "set_name": "Paldean Fates",
+    "language": "Inglês",
+    "rarity": "Shiny Rare"
   },
   {
     "slug": "riolu",
@@ -206,7 +230,10 @@
       575
     ],
     "image_origin": "Uploaded card scan/photograph; cropped and interpolated to 1200×1680 px. Intrinsic detail unchanged. Condition NM reported by seller.",
-    "id": "e88b33d9-36ce-5064-b8f0-c721de812d7f"
+    "id": "e88b33d9-36ce-5064-b8f0-c721de812d7f",
+    "set_name": "Paldean Fates",
+    "language": "Inglês",
+    "rarity": "Shiny Rare"
   },
   {
     "slug": "sneasel",
@@ -229,7 +256,10 @@
       576
     ],
     "image_origin": "Uploaded card scan/photograph; cropped and interpolated to 1200×1680 px. Intrinsic detail unchanged. Condition NM reported by seller.",
-    "id": "491d8c91-7b7b-5cb6-81f9-d4b7dc5ff525"
+    "id": "491d8c91-7b7b-5cb6-81f9-d4b7dc5ff525",
+    "set_name": "Paldean Fates",
+    "language": "Inglês",
+    "rarity": "Shiny Rare"
   },
   {
     "slug": "oddish",
@@ -252,6 +282,9 @@
       1152
     ],
     "image_origin": "Uploaded card scan/photograph; cropped and interpolated to 1200×1680 px. Intrinsic detail unchanged. Condition NM reported by seller.",
-    "id": "f24f24e0-cc51-50e7-84ff-61e953d693c9"
+    "id": "f24f24e0-cc51-50e7-84ff-61e953d693c9",
+    "set_name": "Paldean Fates",
+    "language": "Inglês",
+    "rarity": "Shiny Rare"
   }
 ]

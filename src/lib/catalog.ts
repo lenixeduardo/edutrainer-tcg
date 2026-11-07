@@ -2,9 +2,8 @@ import type { Product } from "./types";
 import { DEMO_PRODUCTS } from "./demo-data";
 import { isDemo, supabase } from "./supabase";
 
-const KEY = "edutrainer:demo-products:v4";
-const LEGACY_KEY = "edutrainer:demo-products:v3";
-const OLDER_KEY = "edutrainer:demo-products:v2";
+const KEY = "edutrainer:demo-products:v5";
+const LEGACY_KEYS = ["edutrainer:demo-products:v4", "edutrainer:demo-products:v3", "edutrainer:demo-products:v2", "edutrainer:demo-products:v1"] as const;
 
 export async function loadProducts(): Promise<Product[]> {
   if (isDemo) {
@@ -15,7 +14,7 @@ export async function loadProducts(): Promise<Product[]> {
         const parsed: unknown = JSON.parse(saved);
         return Array.isArray(parsed) ? parsed as Product[] : DEMO_PRODUCTS;
       }
-      const legacy = localStorage.getItem(LEGACY_KEY) ?? localStorage.getItem(OLDER_KEY);
+      const legacy = LEGACY_KEYS.map(key => localStorage.getItem(key)).find(value => value !== null);
       if (!legacy) return DEMO_PRODUCTS;
       const old: unknown = JSON.parse(legacy);
       const previous = Array.isArray(old) ? old.filter((item): item is Product => Boolean(item && typeof item.id === "string")) : [];

@@ -12,6 +12,8 @@ const references: Record<string,ReferenceEntry> = {
   "202/091":{name:"snorlax",url:"https://images.pokemontcg.io/sv4pt5/202_hires.png"},
   "116/091":{name:"slowpoke",url:"https://images.pokemontcg.io/sv4pt5/116_hires.png"},
   "201/091":{name:"ditto",url:"https://images.pokemontcg.io/sv4pt5/201_hires.png"},
+  "173/091":{name:"riolu",url:"https://images.pokemontcg.io/sv4pt5/173_hires.png"},
+  "182/091":{name:"sneasel",url:"https://images.pokemontcg.io/sv4pt5/182_hires.png"},
   "092/091":{name:"oddish",url:"https://images.pokemontcg.io/sv4pt5/92_hires.png"},
   "100/100":{name:"zapdos lv.30",aliases:["zapdos shiny","zapdos"],url:"https://cdn.pooka.app/card/ja-dpt3-100.png",language:"Japonês",source:"Pooka — Beat of the Frontier (DPt3), 100/100"}
 };

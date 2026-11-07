@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import CardDetailViewer from "./card-detail-viewer";
+import { getCardReference } from "@/lib/card-reference";
 import {
   ArrowLeft, ArrowRight, Check, ChevronDown, Heart, Menu, Minus, Plus,
   Search, ShieldCheck, ShoppingBag, SlidersHorizontal, Sparkles, Trash2, Truck, X,
@@ -19,10 +20,16 @@ const PHONE = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "";
 type SortBy = "featured" | "price-asc" | "price-desc" | "name";
 
 function ProductVisual({ product, side = "front", className = "" }: { product: Product; side?: "front" | "back"; className?: string }) {
-  const src = side === "front" ? product.front_url : product.back_url;
+  const [referenceFailed,setReferenceFailed]=useState(false);
+  const ref=side==="front" ? getCardReference(product) : null;
+  const useArt=Boolean(ref&&!referenceFailed);
+  const src=useArt ? ref!.url : side==="front" ? product.front_url : product.back_url;
   return <div className={`card-visual ${className}`}>
-    {src ? <img src={src} alt={`${side === "front" ? "Frente" : "Verso"} da carta ${product.name} ${product.card_number}`} loading="lazy" /> :
-      <div className="no-card-image"><span className="placeholder-logo">E<span>·</span></span><span>Foto {side === "front" ? "da frente" : "do verso"} não cadastrada</span></div>}
+    {src ? <img src={src} loading="lazy"
+      alt={useArt ? `Arte digital EN de ${product.name} ${product.card_number}, não foto do exemplar NM` : `Imagem enviada de ${product.name}, ${side==="front"?"frente":"verso"}`}
+      onError={() => { if(useArt)setReferenceFailed(true); }} /> :
+      <div className="no-card-image"><span>Imagem não cadastrada</span></div>}
+    {useArt && <span className="et-art-badge">Arte digital EN{!ref!.matchesLanguage ? " · outro idioma" : ""}</span>}
   </div>;
 }
 

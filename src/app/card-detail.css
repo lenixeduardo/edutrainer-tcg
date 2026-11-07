@@ -62,3 +62,9 @@
 
 .admin-photo-guidance{padding:13px 16px;border:1px solid #c6ddf8;background:#f1f7ff;color:#284c72;border-radius:10px;font-size:12px;line-height:1.6}
 .admin-photo-guidance strong{color:#003A70}
+
+/* Em cards, a imagem digital EN é identificada como arte de referência. */
+.card-visual{position:relative}
+.et-art-badge{position:absolute;bottom:3px;left:4px;right:4px;pointer-events:none;z-index:2;padding:4px 5px;background:rgba(255,255,255,.94);color:#003A70;border:1px solid #dbe8f5;border-radius:6px;text-align:center;font:600 9px/1.3 Inter,Arial,sans-serif}
+.et-gallery-switch{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:600px){.et-gallery-switch{grid-template-columns:repeat(4,minmax(0,1fr))}.et-gallery-switch button{min-width:0;font-size:10px;padding:7px 2px}.et-art-badge{font-size:8px}}

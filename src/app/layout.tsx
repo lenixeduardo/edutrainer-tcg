@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./official-theme.css";
 import "./card-360.css";
+import "./card-detail.css";
 
 export const metadata: Metadata = {
   title: "EduTrainer TCG | Cartas Pokémon",

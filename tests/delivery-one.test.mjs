@@ -18,13 +18,13 @@ test("11 cartas corretas e preços inalterados", () => {
  }
 });
 test("Riolu e Sneasel com referências HD e fallback preservado", () => {
- assert.match(refs,/sv4pt5\\/173_hires\\.png/);
- assert.match(refs,/sv4pt5\\/182_hires\\.png/);
- assert.match(refs,/ja-dpt3-100\\.png/);
+ assert.ok(refs.includes("sv4pt5/173_hires.png"));
+ assert.ok(refs.includes("sv4pt5/182_hires.png"));
+ assert.ok(refs.includes("ja-dpt3-100.png"));
  assert.match(ui,/referenceFailed/);
 });
 test("proporção fiel, botões e identidade preservados", () => {
- assert.match(css,/aspect-ratio:63\\/88/);
+ assert.ok(css.includes("aspect-ratio:63/88"));
  assert.match(css,/object-fit:contain/);
  assert.match(css,/max-height:none/);
  assert.match(ui,/et-product-meta/);

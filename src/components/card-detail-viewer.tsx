@@ -112,24 +112,24 @@ export default function CardDetailViewer({ product }: Props) {
   const handleZoomClose = useCallback(() => setZoomOpen(false), []);
   const changeMode = (next: Mode) => { setMode(next); setZoomOpen(false); setMissing(false); };
   return <div className="et-detail-gallery" data-testid="card-detail-gallery">
-    <div className="et-gallery-toolbar"><span><ImageIcon size={15}/> Imagem da carta</span><span className="et-gallery-note">{showingReference ? "Arte digital em inglês" : "Imagem enviada"}</span></div>
+    <div className="et-gallery-toolbar"><span><ImageIcon size={15}/> Imagem da carta</span><span className="et-gallery-note">{showingReference ? `Arte digital em ${reference?.language === "Japonês" ? "japonês" : "inglês"}` : "Imagem enviada"}</span></div>
     {mode === "360" ? <Card360Viewer product={product}/> : <>
       <div className="et-card-image-stage">
-        {url && !missing ? <img src={url} alt={`${side === "front" ? "Frente" : "Verso"} da carta ${product.name}, número ${product.card_number}`} draggable={false} onLoad={event => setSizes(current => ({ ...current, [imageKey]: {width:event.currentTarget.naturalWidth,height:event.currentTarget.naturalHeight} }))} onError={() => { if(showingReference){setReferenceFailed(true);setMode("front");}else setMissing(true); }}/>
+        {url && !missing ? <img src={url} alt={showingReference ? `Arte de referência da carta ${product.name}, número ${product.card_number}` : `${side === "front" ? "Frente" : "Verso"} da carta ${product.name}, número ${product.card_number}`} draggable={false} onLoad={event => setSizes(current => ({ ...current, [imageKey]: {width:event.currentTarget.naturalWidth,height:event.currentTarget.naturalHeight} }))} onError={() => { if(showingReference){setReferenceFailed(true);setMode("front");}else setMissing(true); }}/>
         : <div className="et-gallery-placeholder">Imagem não disponível</div>}
       </div>
-      <p className="et-gallery-provenance">{showingReference ? `Arte digital da edição (EN) · não representa o exemplar NM${reference&&!reference.matchesLanguage?" · idioma diferente do produto":""}` : describeSource(url,side)}</p>
+      <p className="et-gallery-provenance">{showingReference ? `Arte digital da edição (${reference?.language === "Japonês" ? "JP" : "EN"}) · não representa o exemplar NM${reference&&!reference.matchesLanguage?" · idioma diferente do produto":""}` : describeSource(url,side)}</p>
       <p className={`et-gallery-quality${info && info.width < MIN_INSPECTION_WIDTH ? " et-gallery-lowres" : ""}`} aria-live="polite">
         {info ? `${info.width} × ${info.height} px${showingReference ? " · imagem de referência digital" : UPSCALED_IMAGE.test(url) ? " · upscale por interpolação, sem detalhes novos" : info.width < MIN_INSPECTION_WIDTH ? " · resolução insuficiente para inspecionar detalhes" : " · ampliação disponível"}` : "Preservando o arquivo original e suas proporções"}
       </p>
       <button type="button" className="et-open-zoom" onClick={() => setZoomOpen(true)} disabled={!url || missing}><ZoomIn size={18}/> Abrir ampliação <Maximize2 size={15}/></button>
     </>}
     <nav className="et-gallery-switch" aria-label="Visualização da carta">
-      {reference && <button type="button" className={mode === "reference" ? "active" : ""} aria-pressed={mode === "reference"} onClick={() => changeMode("reference")} disabled={referenceFailed}>Arte HD (EN)</button>}
+      {reference && <button type="button" className={mode === "reference" ? "active" : ""} aria-pressed={mode === "reference"} onClick={() => changeMode("reference")} disabled={referenceFailed}>Arte {reference.language === "Japonês" ? "JP" : "HD (EN)"}</button>}
       <button type="button" className={mode === "front" ? "active" : ""} aria-pressed={mode === "front"} onClick={() => changeMode("front")}>Frente</button>
       <button type="button" className={mode === "back" ? "active" : ""} aria-pressed={mode === "back"} onClick={() => changeMode("back")} disabled={!hasBack}>Verso</button>
       <button type="button" className={mode === "360" ? "active" : ""} aria-pressed={mode === "360"} onClick={() => changeMode("360")} disabled={!hasBack}><ArrowLeftRight size={15}/> Giro 360°</button>
     </nav>
-    {zoomOpen && url && <ZoomDialog src={url} alt={`${side === "front" ? "Frente" : "Verso"} de ${product.name}`} info={info} onClose={handleZoomClose} isReference={showingReference} />}
+    {zoomOpen && url && <ZoomDialog src={url} alt={showingReference ? `Arte de referência de ${product.name}` : `${side === "front" ? "Frente" : "Verso"} de ${product.name}`} info={info} onClose={handleZoomClose} isReference={showingReference} />}
   </div>;
 }

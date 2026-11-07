@@ -2,9 +2,9 @@ import type { Product } from "./types";
 import { DEMO_PRODUCTS } from "./demo-data";
 import { isDemo, supabase } from "./supabase";
 
-const KEY = "edutrainer:demo-products:v3";
-const LEGACY_KEY = "edutrainer:demo-products:v2";
-const OLDER_KEY = "edutrainer:demo-products:v1";
+const KEY = "edutrainer:demo-products:v4";
+const LEGACY_KEY = "edutrainer:demo-products:v3";
+const OLDER_KEY = "edutrainer:demo-products:v2";
 
 export async function loadProducts(): Promise<Product[]> {
   if (isDemo) {

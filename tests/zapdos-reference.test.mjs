@@ -1,0 +1,11 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import {readFileSync} from "node:fs";
+const ref=readFileSync(new URL("../src/lib/card-reference.ts",import.meta.url),"utf8");
+const demo=readFileSync(new URL("../src/lib/demo-data.ts",import.meta.url),"utf8");
+const gallery=readFileSync(new URL("../src/components/card-detail-viewer.tsx",import.meta.url),"utf8");
+const catalog=readFileSync(new URL("../src/lib/catalog.ts",import.meta.url),"utf8");
+test("Zapdos Pt3 possui imagem de referencia japonesa",()=>{assert.match(ref,/"100\/100":\{name:"zapdos lv\.30"/);assert.match(ref,/ja-dpt3-100\.png/);assert.match(ref,/language:"Japonês"/);});
+test("produto utiliza identificacao correta e mantem foto e preco",()=>{assert.match(demo,/"name": "Zapdos LV\.30", "set_name": "Beat of the Frontier \(Pt3\)"/);assert.match(demo,/zapdos-japones-foto-original\.webp/);assert.match(demo,/"price_cents": 39990/);});
+test("visualizador alterna idioma sem alterar imagem do exemplar",()=>{assert.match(gallery,/reference\.language === "Japonês" \? "JP"/);assert.match(gallery,/Giro 360°/);});
+test("cache de demo migrado sem perder preco e estoque",()=>{assert.match(catalog,/edutrainer:demo-products:v4/);for(const key of ["price_cents","stock","is_published"])assert.match(catalog,new RegExp("saved\\."+key));});

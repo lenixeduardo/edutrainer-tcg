@@ -26,10 +26,10 @@ function ProductVisual({ product, side = "front", className = "" }: { product: P
   const src=useArt ? ref!.url : side==="front" ? product.front_url : product.back_url;
   return <div className={`card-visual ${className}`}>
     {src ? <img src={src} loading="lazy"
-      alt={useArt ? `Arte digital EN de ${product.name} ${product.card_number}, não foto do exemplar NM` : `Imagem enviada de ${product.name}, ${side==="front"?"frente":"verso"}`}
+      alt={useArt ? `Arte digital ${ref!.language} de ${product.name} ${product.card_number}, não foto do exemplar NM` : `Imagem enviada de ${product.name}, ${side==="front"?"frente":"verso"}`}
       onError={() => { if(useArt)setReferenceFailed(true); }} /> :
       <div className="no-card-image"><span>Imagem não cadastrada</span></div>}
-    {useArt && <span className="et-art-badge">Arte digital EN{!ref!.matchesLanguage ? " · outro idioma" : ""}</span>}
+    {useArt && <span className="et-art-badge">Arte digital {ref!.language === "Japonês" ? "JP" : "EN"}{!ref!.matchesLanguage ? " · outro idioma" : ""}</span>}
   </div>;
 }
 

@@ -11,6 +11,7 @@ type ImageSize = { width: number; height: number };
 type Props = { product: Product };
 const MIN_INSPECTION_WIDTH = 1200;
 const MAX_ZOOM = 4;
+const UPSCALED_IMAGE = /-hq\.webp(?:$|\?)/;
 const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
 
 /**
@@ -24,6 +25,7 @@ function describeSource(url: string, side: Side): string {
   if (/\/cards\/shiny\/zapdos-japones-foto-original\.webp(?:$|\?)/.test(url) && side === "front") {
     return "Fotografia enviada do exemplar · sem validação de condição";
   }
+  if (url.includes("-hq.webp")) return "Imagem enviada · recorte preciso · ampliação interpolada, sem recriação por IA";
   if (/\/cards\/shiny\//.test(url)) return "Recorte da montagem enviada · imagem de referência";
   return "Imagem cadastrada · confirme se corresponde ao exemplar à venda";
 }
@@ -113,7 +115,7 @@ export default function CardDetailViewer({ product }: Props) {
       </div>
       <p className="et-gallery-provenance">{describeSource(url,side)}</p>
       <p className={`et-gallery-quality${info && info.width < MIN_INSPECTION_WIDTH ? " et-gallery-lowres" : ""}`} aria-live="polite">
-        {info ? `${info.width} × ${info.height} px${info.width < MIN_INSPECTION_WIDTH ? " · resolução insuficiente para inspecionar detalhes" : " · ampliação disponível"}` : "Preservando o arquivo original e suas proporções"}
+        {info ? `${info.width} × ${info.height} px${UPSCALED_IMAGE.test(url) ? " · upscale por interpolação, sem detalhes novos" : info.width < MIN_INSPECTION_WIDTH ? " · resolução insuficiente para inspecionar detalhes" : " · ampliação disponível"}` : "Preservando o arquivo original e suas proporções"}
       </p>
       <button type="button" className="et-open-zoom" onClick={() => setZoomOpen(true)} disabled={!url || missing}><ZoomIn size={18}/> Abrir ampliação <Maximize2 size={15}/></button>
     </>}

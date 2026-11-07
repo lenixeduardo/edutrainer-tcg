@@ -80,3 +80,7 @@ npm run build
 - Para versão de produção de maior escala: mover a validação de checkout para API própria, adicionar inventário de múltiplos exemplares, tracking de intents e logs de alteração.
 
 **Validação deste pacote:** testes de regras de negócio (13), testes de importação/ativos (11 registros e 22 arquivos) e verificação de sintaxe JS da prévia passaram. O build Next.js e a prévia visual em navegador não foram completamente validados neste ambiente, pois dependências de React/Next não estão instaladas e a navegação do navegador de testes foi bloqueada.
+
+### Atualização NM e imagens (novembro/2026)
+
+Fotos e scans enviados foram recortados para o formato da carta e ampliados por interpolação (1200×1680). A ampliação não cria detalhes ausentes na fonte. As oito cartas cujo número corresponde aos anúncios receberam as novas imagens. Applin SV012/SV122 e Ditto 309/190 JP estão em rascunho, por não corresponderem aos anúncios preexistentes nem terem preço. Todas as cartas foram declaradas NM pelo vendedor; disponibilidade continua a confirmar. Veja `docs/IMAGE-UPSCALE-NM.md`.

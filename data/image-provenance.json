@@ -1,0 +1,387 @@
+[
+  {
+    "slug": "charmander-109-091",
+    "file": "public/cards/shiny/charmander-109-091-hq.webp",
+    "source": "E4BD91D7-CB6B-41A0-AD27-080A33E22BC8(1).jpeg",
+    "source_px": [
+      880,
+      1229
+    ],
+    "quad": [
+      [
+        74,
+        103
+      ],
+      [
+        805,
+        103
+      ],
+      [
+        805,
+        1127
+      ],
+      [
+        74,
+        1127
+      ]
+    ],
+    "size_px": [
+      1200,
+      1680
+    ],
+    "type": "scan",
+    "status": "existing",
+    "bytes": 316956,
+    "note": "Interpolation (Lanczos/bicubic); no synthetic missing detail or text."
+  },
+  {
+    "slug": "riolu-173-091",
+    "file": "public/cards/shiny/riolu-173-091-hq.webp",
+    "source": "IMG_5075(1).jpeg",
+    "source_px": [
+      305,
+      425
+    ],
+    "quad": [
+      [
+        1,
+        1
+      ],
+      [
+        304,
+        1
+      ],
+      [
+        304,
+        424
+      ],
+      [
+        1,
+        424
+      ]
+    ],
+    "size_px": [
+      1200,
+      1680
+    ],
+    "type": "scan_lowres",
+    "status": "existing",
+    "bytes": 119168,
+    "note": "Interpolation (Lanczos/bicubic); no synthetic missing detail or text."
+  },
+  {
+    "slug": "lucario-174-091",
+    "file": "public/cards/shiny/lucario-174-091-hq.webp",
+    "source": "41FC1B36-DD83-448B-B3B2-BB55048D1F02(1).jpeg",
+    "source_px": [
+      1024,
+      1024
+    ],
+    "quad": [
+      [
+        144,
+        15
+      ],
+      [
+        852,
+        15
+      ],
+      [
+        853,
+        1010
+      ],
+      [
+        145,
+        1010
+      ]
+    ],
+    "size_px": [
+      1200,
+      1680
+    ],
+    "type": "photo_stand",
+    "status": "existing",
+    "bytes": 323026,
+    "note": "Interpolation (Lanczos/bicubic); no synthetic missing detail or text."
+  },
+  {
+    "slug": "pikachu-131-091",
+    "file": "public/cards/shiny/pikachu-131-091-hq.webp",
+    "source": "64E57102-8543-4D7F-99B5-40D75CDB64B9(1).jpeg",
+    "source_px": [
+      700,
+      700
+    ],
+    "quad": [
+      [
+        99,
+        0
+      ],
+      [
+        600,
+        0
+      ],
+      [
+        600,
+        700
+      ],
+      [
+        99,
+        700
+      ]
+    ],
+    "size_px": [
+      1200,
+      1680
+    ],
+    "type": "scan",
+    "status": "existing",
+    "bytes": 220102,
+    "note": "Interpolation (Lanczos/bicubic); no synthetic missing detail or text."
+  },
+  {
+    "slug": "snorlax-202-091",
+    "file": "public/cards/shiny/snorlax-202-091-hq.webp",
+    "source": "7C7B474F-ACEC-4863-8E8F-554E8C32AE2C(1).jpeg",
+    "source_px": [
+      880,
+      1229
+    ],
+    "quad": [
+      [
+        74,
+        103
+      ],
+      [
+        806,
+        103
+      ],
+      [
+        806,
+        1127
+      ],
+      [
+        74,
+        1127
+      ]
+    ],
+    "size_px": [
+      1200,
+      1680
+    ],
+    "type": "scan",
+    "status": "existing",
+    "bytes": 299138,
+    "note": "Interpolation (Lanczos/bicubic); no synthetic missing detail or text."
+  },
+  {
+    "slug": "oddish-092-091",
+    "file": "public/cards/shiny/oddish-092-091-hq.webp",
+    "source": "IMG_5076(1).jpeg",
+    "source_px": [
+      305,
+      425
+    ],
+    "quad": [
+      [
+        0,
+        0
+      ],
+      [
+        305,
+        0
+      ],
+      [
+        305,
+        425
+      ],
+      [
+        0,
+        425
+      ]
+    ],
+    "size_px": [
+      1200,
+      1680
+    ],
+    "type": "scan_lowres",
+    "status": "existing",
+    "bytes": 104328,
+    "note": "Interpolation (Lanczos/bicubic); no synthetic missing detail or text."
+  },
+  {
+    "slug": "sneasel-182-091",
+    "file": "public/cards/shiny/sneasel-182-091-hq.webp",
+    "source": "IMG_5077(1).jpeg",
+    "source_px": [
+      305,
+      425
+    ],
+    "quad": [
+      [
+        0,
+        0
+      ],
+      [
+        305,
+        0
+      ],
+      [
+        305,
+        425
+      ],
+      [
+        0,
+        425
+      ]
+    ],
+    "size_px": [
+      1200,
+      1680
+    ],
+    "type": "scan_lowres",
+    "status": "existing",
+    "bytes": 114550,
+    "note": "Interpolation (Lanczos/bicubic); no synthetic missing detail or text."
+  },
+  {
+    "slug": "applin-sv012-sv122",
+    "file": "public/cards/shiny/applin-sv012-sv122-hq.webp",
+    "source": "IMG_5052(1).jpeg",
+    "source_px": [
+      350,
+      489
+    ],
+    "quad": [
+      [
+        0,
+        0
+      ],
+      [
+        350,
+        0
+      ],
+      [
+        350,
+        489
+      ],
+      [
+        0,
+        489
+      ]
+    ],
+    "size_px": [
+      1200,
+      1680
+    ],
+    "type": "scan_lowres",
+    "status": "draft",
+    "bytes": 142672,
+    "note": "Interpolation (Lanczos/bicubic); no synthetic missing detail or text."
+  },
+  {
+    "slug": "slowpoke-116-091",
+    "file": "public/cards/shiny/slowpoke-116-091-hq.webp",
+    "source": "FCA3962A-C1CC-497C-87F1-61F4383542E6(1).jpeg",
+    "source_px": [
+      1024,
+      1024
+    ],
+    "quad": [
+      [
+        187,
+        39
+      ],
+      [
+        859,
+        46
+      ],
+      [
+        874,
+        999
+      ],
+      [
+        150,
+        996
+      ]
+    ],
+    "size_px": [
+      1200,
+      1680
+    ],
+    "type": "photo",
+    "status": "existing",
+    "bytes": 142520,
+    "note": "Interpolation (Lanczos/bicubic); no synthetic missing detail or text."
+  },
+  {
+    "slug": "ditto-309-190-jp",
+    "file": "public/cards/shiny/ditto-309-190-jp-hq.webp",
+    "source": "FF423B61-13D0-448B-BEE9-ABFD0B1BEDC5(1).jpeg",
+    "source_px": [
+      1536,
+      1024
+    ],
+    "quad": [
+      [
+        200,
+        111
+      ],
+      [
+        707,
+        113
+      ],
+      [
+        714,
+        854
+      ],
+      [
+        194,
+        853
+      ]
+    ],
+    "size_px": [
+      1200,
+      1680
+    ],
+    "type": "photo_composite",
+    "status": "draft",
+    "bytes": 306106,
+    "note": "Interpolation (Lanczos/bicubic); no synthetic missing detail or text."
+  },
+  {
+    "slug": "ditto-309-190-jp-back",
+    "file": "public/cards/shiny/ditto-309-190-jp-back-hq.webp",
+    "source": "FF423B61-13D0-448B-BEE9-ABFD0B1BEDC5(1).jpeg",
+    "source_px": [
+      1536,
+      1024
+    ],
+    "quad": [
+      [
+        836,
+        111
+      ],
+      [
+        1340,
+        116
+      ],
+      [
+        1339,
+        853
+      ],
+      [
+        827,
+        851
+      ]
+    ],
+    "size_px": [
+      1200,
+      1680
+    ],
+    "type": "photo_composite",
+    "status": "draft",
+    "bytes": 258068,
+    "note": "Interpolation (Lanczos/bicubic); no synthetic missing detail or text."
+  }
+]

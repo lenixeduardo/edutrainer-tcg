@@ -29,7 +29,7 @@
     "name": "Snorlax",
     "card_number": "202/091",
     "price_cents": 17990,
-    "front_url": "/cards/shiny/snorlax-202-091-front.webp",
+    "front_url": "/cards/shiny/snorlax-202-091-hq.webp",
     "back_url": "/cards/shiny/snorlax-202-091-back.webp",
     "origin_image": "D7C2B53F-7A1B-4B9D-B3D2-A5220B4070B5.jpeg",
     "front_crop": [
@@ -44,7 +44,7 @@
       1078,
       571
     ],
-    "image_origin": "cropped from user-supplied montage; not independently verified photographs",
+    "image_origin": "Uploaded card scan/photograph; cropped and interpolated to 1200×1680 px. Intrinsic detail unchanged. Condition NM reported by seller.",
     "id": "74d74dbf-7b5b-5065-86f6-c7b78e646195"
   },
   {
@@ -52,7 +52,7 @@
     "name": "Pikachu",
     "card_number": "131/091",
     "price_cents": 16990,
-    "front_url": "/cards/shiny/pikachu-131-091-front.webp",
+    "front_url": "/cards/shiny/pikachu-131-091-hq.webp",
     "back_url": "/cards/shiny/pikachu-131-091-back.webp",
     "origin_image": "D7C2B53F-7A1B-4B9D-B3D2-A5220B4070B5.jpeg",
     "front_crop": [
@@ -67,7 +67,7 @@
       532,
       1129
     ],
-    "image_origin": "cropped from user-supplied montage; not independently verified photographs",
+    "image_origin": "Uploaded card scan/photograph; cropped and interpolated to 1200×1680 px. Intrinsic detail unchanged. Condition NM reported by seller.",
     "id": "960bf706-0aeb-57f3-bb47-c4fa41056c54"
   },
   {
@@ -98,7 +98,7 @@
     "name": "Lucario",
     "card_number": "174/091",
     "price_cents": 11990,
-    "front_url": "/cards/shiny/lucario-174-091-front.webp",
+    "front_url": "/cards/shiny/lucario-174-091-hq.webp",
     "back_url": "/cards/shiny/lucario-174-091-back.webp",
     "origin_image": "D467B99A-6E2C-41B1-8A78-C352FEF2865F.jpeg",
     "front_crop": [
@@ -113,7 +113,7 @@
       538,
       586
     ],
-    "image_origin": "cropped from user-supplied montage; not independently verified photographs",
+    "image_origin": "Uploaded card scan/photograph; cropped and interpolated to 1200×1680 px. Intrinsic detail unchanged. Condition NM reported by seller.",
     "id": "bc3506d4-e232-57ee-bf0f-dbf67d1d1637"
   },
   {
@@ -121,7 +121,7 @@
     "name": "Charmander",
     "card_number": "109/091",
     "price_cents": 10990,
-    "front_url": "/cards/shiny/charmander-109-091-front.webp",
+    "front_url": "/cards/shiny/charmander-109-091-hq.webp",
     "back_url": "/cards/shiny/charmander-109-091-back.webp",
     "origin_image": "D467B99A-6E2C-41B1-8A78-C352FEF2865F.jpeg",
     "front_crop": [
@@ -136,7 +136,7 @@
       1088,
       587
     ],
-    "image_origin": "cropped from user-supplied montage; not independently verified photographs",
+    "image_origin": "Uploaded card scan/photograph; cropped and interpolated to 1200×1680 px. Intrinsic detail unchanged. Condition NM reported by seller.",
     "id": "031739e1-9cf1-523d-89af-993c179b7241"
   },
   {
@@ -167,7 +167,7 @@
     "name": "Slowpoke",
     "card_number": "116/091",
     "price_cents": 5990,
-    "front_url": "/cards/shiny/slowpoke-116-091-front.webp",
+    "front_url": "/cards/shiny/slowpoke-116-091-hq.webp",
     "back_url": "/cards/shiny/slowpoke-116-091-back.webp",
     "origin_image": "D467B99A-6E2C-41B1-8A78-C352FEF2865F.jpeg",
     "front_crop": [
@@ -182,7 +182,7 @@
       1088,
       1162
     ],
-    "image_origin": "cropped from user-supplied montage; not independently verified photographs",
+    "image_origin": "Uploaded card scan/photograph; cropped and interpolated to 1200×1680 px. Intrinsic detail unchanged. Condition NM reported by seller.",
     "id": "cfd51a45-2f1e-525d-a49b-0cf270066f28"
   },
   {
@@ -190,7 +190,7 @@
     "name": "Riolu",
     "card_number": "173/091",
     "price_cents": 4990,
-    "front_url": "/cards/shiny/riolu-173-091-front.webp",
+    "front_url": "/cards/shiny/riolu-173-091-hq.webp",
     "back_url": "/cards/shiny/riolu-173-091-back.webp",
     "origin_image": "AFBEE1C3-5E55-4C2F-8CD3-D960C316DE3A.jpeg",
     "front_crop": [
@@ -205,7 +205,7 @@
       535,
       575
     ],
-    "image_origin": "cropped from user-supplied montage; not independently verified photographs",
+    "image_origin": "Uploaded card scan/photograph; cropped and interpolated to 1200×1680 px. Intrinsic detail unchanged. Condition NM reported by seller.",
     "id": "e88b33d9-36ce-5064-b8f0-c721de812d7f"
   },
   {
@@ -213,7 +213,7 @@
     "name": "Sneasel",
     "card_number": "182/091",
     "price_cents": 2990,
-    "front_url": "/cards/shiny/sneasel-182-091-front.webp",
+    "front_url": "/cards/shiny/sneasel-182-091-hq.webp",
     "back_url": "/cards/shiny/sneasel-182-091-back.webp",
     "origin_image": "AFBEE1C3-5E55-4C2F-8CD3-D960C316DE3A.jpeg",
     "front_crop": [
@@ -228,7 +228,7 @@
       1082,
       576
     ],
-    "image_origin": "cropped from user-supplied montage; not independently verified photographs",
+    "image_origin": "Uploaded card scan/photograph; cropped and interpolated to 1200×1680 px. Intrinsic detail unchanged. Condition NM reported by seller.",
     "id": "491d8c91-7b7b-5cb6-81f9-d4b7dc5ff525"
   },
   {
@@ -236,7 +236,7 @@
     "name": "Oddish",
     "card_number": "092/091",
     "price_cents": 2490,
-    "front_url": "/cards/shiny/oddish-092-091-front.webp",
+    "front_url": "/cards/shiny/oddish-092-091-hq.webp",
     "back_url": "/cards/shiny/oddish-092-091-back.webp",
     "origin_image": "AFBEE1C3-5E55-4C2F-8CD3-D960C316DE3A.jpeg",
     "front_crop": [
@@ -251,7 +251,7 @@
       536,
       1152
     ],
-    "image_origin": "cropped from user-supplied montage; not independently verified photographs",
+    "image_origin": "Uploaded card scan/photograph; cropped and interpolated to 1200×1680 px. Intrinsic detail unchanged. Condition NM reported by seller.",
     "id": "f24f24e0-cc51-50e7-84ff-61e953d693c9"
   }
 ]

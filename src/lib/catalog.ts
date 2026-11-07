@@ -2,8 +2,9 @@ import type { Product } from "./types";
 import { DEMO_PRODUCTS } from "./demo-data";
 import { isDemo, supabase } from "./supabase";
 
-const KEY = "edutrainer:demo-products:v2";
-const LEGACY_KEY = "edutrainer:demo-products:v1";
+const KEY = "edutrainer:demo-products:v3";
+const LEGACY_KEY = "edutrainer:demo-products:v2";
+const OLDER_KEY = "edutrainer:demo-products:v1";
 
 export async function loadProducts(): Promise<Product[]> {
   if (isDemo) {
@@ -14,13 +15,17 @@ export async function loadProducts(): Promise<Product[]> {
         const parsed: unknown = JSON.parse(saved);
         return Array.isArray(parsed) ? parsed as Product[] : DEMO_PRODUCTS;
       }
-      const legacy = localStorage.getItem(LEGACY_KEY);
+      const legacy = localStorage.getItem(LEGACY_KEY) ?? localStorage.getItem(OLDER_KEY);
       if (!legacy) return DEMO_PRODUCTS;
       const old: unknown = JSON.parse(legacy);
-      const custom = Array.isArray(old) ? (old as Product[]).filter(item => item && typeof item.id === "string" && !item.id.startsWith("demo-")) : [];
-      const migrated = [...DEMO_PRODUCTS, ...custom.filter(item => !DEMO_PRODUCTS.some(seed => seed.id === item.id))];
-      localStorage.setItem(KEY, JSON.stringify(migrated));
-      return migrated;
+      const previous = Array.isArray(old) ? old.filter((item): item is Product => Boolean(item && typeof item.id === "string")) : [];
+      const merged: Product[] = DEMO_PRODUCTS.map(seed => {
+        const saved = previous.find(item => item.id === seed.id);
+        return saved ? { ...seed, price_cents: saved.price_cents, stock: saved.stock, is_published: saved.is_published } : seed;
+      });
+      for (const oldProduct of previous) if (!merged.some(item => item.id === oldProduct.id)) merged.push(oldProduct);
+      localStorage.setItem(KEY, JSON.stringify(merged));
+      return merged;
     }
     catch { return DEMO_PRODUCTS; }
   }

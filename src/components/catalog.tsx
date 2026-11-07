@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import CardDetailViewer from "./card-detail-viewer";
 import {
-  ArrowLeft, ArrowRight, Check, ChevronDown, Heart, Instagram, Menu, Minus, Plus,
+  ArrowLeft, ArrowRight, Check, ChevronDown, Heart, Menu, Minus, Plus,
   Search, ShieldCheck, ShoppingBag, SlidersHorizontal, Sparkles, Trash2, Truck, X,
   PackageCheck, Copy, ExternalLink, RotateCcw
 } from "lucide-react";

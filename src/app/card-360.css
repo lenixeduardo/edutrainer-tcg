@@ -1,0 +1,23 @@
+/* EduTrainer 360º viewer: original front/back assets; white mode */
+.card360{display:flex;align-items:center;flex-direction:column;width:100%;min-width:0;gap:11px;color:#003A70}
+.card360-stage{display:grid;place-items:center;perspective:1100px;width:min(100%,360px,38vh);aspect-ratio:63/88;outline-offset:5px;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+.card360-stage:focus-visible{outline:3px solid #3D7DCA;border-radius:13px}
+.card360-stage.card360-dragging{cursor:grabbing;touch-action:none}
+.card360-card{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform 400ms cubic-bezier(.2,.72,.15,1);will-change:transform}
+.card360-dragging .card360-card,.card360-playing .card360-card{transition:none}
+.card360-face{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:12px;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:0 7px 24px #003A701A;background:#F6F9FE}
+.card360-face img{width:100%;height:100%;object-fit:contain;display:block;pointer-events:none;-webkit-user-drag:none}
+.card360-back{transform:rotateY(180deg)}
+.card360-placeholder{width:100%;height:100%;display:grid;place-items:center;padding:24px;text-align:center;font-size:13px;color:#526987;border:1px dashed #AAC3E1;border-radius:12px}
+.card360-hint{font-size:11px;color:#58728E;text-align:center;margin:2px 0 0;line-height:1.4}
+.card360-actions{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:5px;background:#FFFFFF;border:1px solid #DAE8F6;border-radius:100px;padding:5px;max-width:100%}
+.card360-actions button{border:0;border-radius:99px;background:#F2F7FD;color:#003A70;padding:8px 13px;font-size:11px;font-weight:700;display:flex;align-items:center;gap:5px;min-height:34px;white-space:nowrap}
+.card360-actions button.active{background:#FFCB05;color:#003A70}
+.card360-actions .card360-auto{background:#E8F1FC}
+.card360-actions .card360-reset{padding-inline:10px}
+.card360-actions button:disabled{opacity:.42;cursor:not-allowed}
+.card360-actions button:focus-visible{outline:3px solid #3D7DCA;outline-offset:2px}
+.card360-status{font-size:10px;color:#6F829C;text-align:center;display:flex;align-items:center;justify-content:center;gap:5px;line-height:1.4}
+.modal-photo:has(.card360){background:#F6F9FE;padding:22px 19px;gap:0;overflow-x:hidden}
+@media(max-width:600px){.modal-photo .card360-stage{width:min(100%,240px,30vh);height:auto;max-height:none}.card360{gap:7px}.card360-actions button{padding:6px 10px;font-size:10px;min-height:30px}.card360-status{font-size:9px}.card360-hint{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.card360-card{transition:none!important;will-change:auto}}

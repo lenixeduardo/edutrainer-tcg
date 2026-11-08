@@ -146,9 +146,26 @@ export default function CatalogApp() {
     
 
     <main>
-      <section className="hero container" id="inicio">
-        <div className="hero-left"><h1>Colecione o que importa.</h1><p>Encontre suas próximas cartas no mesmo lugar.<br/>Fotos de referência de frente e verso para consulta.</p><a className="hero-cta" href="#catalogo">Explorar catálogo <ArrowRight size={18}/></a></div>
-        <div className="hero-art" aria-hidden="true"><img src="/illustrations/hero-card-outlines.svg" alt="" /></div>
+      <section className="hero container hero-shiny" id="inicio" aria-label="Cartas para colecionadores">
+        <div className="hero-left">
+          <span className="hero-shiny-kicker">SHINY · VINTAGE · COLECIONÁVEIS</span>
+          <h1>Colecione o que importa.</h1>
+          <p>Encontre cartas especiais para sua coleção. Explore cada edição e solicite seu pedido diretamente pelo WhatsApp.</p>
+          <div className="hero-shiny-actions">
+            <a className="hero-cta" href="#catalogo">Explorar catálogo <ArrowRight size={18}/></a>
+            <a className="hero-shiny-secondary" href="#como-funciona">Como comprar</a>
+          </div>
+        </div>
+        <div className="hero-art hero-shiny-art" aria-hidden="true">
+          <div className="hero-shiny-album">
+          <div className="hero-shiny-slot" key="0"><img src="/cards/shiny/charmander-109-091-front.webp" alt="" width="240" height="336" decoding="async" /></div>
+          <div className="hero-shiny-slot" key="1"><img src="/cards/shiny/pikachu-131-091-front.webp" alt="" width="240" height="336" decoding="async" /></div>
+          <div className="hero-shiny-slot" key="2"><img src="/cards/shiny/lucario-174-091-front.webp" alt="" width="240" height="336" decoding="async" /></div>
+          <div className="hero-shiny-slot" key="3"><img src="/cards/shiny/riolu-173-091-front.webp" alt="" width="240" height="336" decoding="async" /></div>
+          <div className="hero-shiny-slot" key="4"><img src="/cards/shiny/slowpoke-116-091-front.webp" alt="" width="240" height="336" decoding="async" /></div>
+          <div className="hero-shiny-slot" key="5"><img src="/cards/shiny/snorlax-202-091-front.webp" alt="" width="240" height="336" decoding="async" /></div>
+          </div>
+        </div>
       </section>
       <section className="catalog-section container" id="catalogo">
         <div className="catalog-heading"><div><h2>Destaques do catálogo</h2><p>Selecione suas cartas e envie o pedido pelo WhatsApp.</p></div><span className="catalog-count">{loaded ? `${products.length} referências cadastradas` : "Carregando catálogo"}</span></div>

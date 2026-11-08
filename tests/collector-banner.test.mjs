@@ -15,7 +15,7 @@ test("Mantém hero existente e inclui banner antes do footer",()=>{
   assert.match(ui,/Sua próxima carta favorita pode estar/);
 });
 test("Banner tem Pokébola, foto local e ambos os links funcionais",()=>{
-  assert.match(ui,/viewBox="0 0 64 64"/);
+  assert.match(ui,/src="\/brand\/pokeball-horizontal-v2\\.svg"/);
   assert.match(ui,/edutrainer-pokebola-photo\.avif/);
   assert.match(ui,/href="#catalogo"/);
   assert.match(ui,/et-collector-secondary" href=\{CONTACT_URL\}/);

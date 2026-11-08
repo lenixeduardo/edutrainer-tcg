@@ -4,7 +4,7 @@ import {readFileSync} from "node:fs";
 const read=p=>readFileSync(new URL("../"+p,import.meta.url),"utf8");
 const ui=read("src/components/catalog.tsx"),admin=read("src/components/admin-dashboard.tsx"),css=read("src/app/official-theme.css"),brand=read("public/brand/pokeball-horizontal-v2.svg");
 test("horizontal Pokeball mark uses approved brand colors",()=>{
- for(const x of ["EduTrainer</text>","TCG</text>","ballClip","#FFCB05","#0051CD"]) assert.ok(brand.includes(x),x);
+ for(const x of ["EduTrainer</text>","TCG</text>","clipPath id=\"disc\"","#FFCB05","#0051CD"]) assert.ok(brand.includes(x),x);
 });
 test("catalog header footer collector banner admin and favicon use same identity",()=>{
  assert.equal(ui.split('src="/brand/pokeball-horizontal-v2.svg"').length-1,3);

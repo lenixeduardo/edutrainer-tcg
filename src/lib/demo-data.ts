@@ -1,4 +1,5 @@
 import type { Product } from "./types";
+import { VINTAGE_PRODUCTS } from "./vintage-data";
 
 // Catálogo demonstrativo; condição NM declarada pelo vendedor, estoque NÃO confirmado.
 // Fotos fornecidas que não correspondem ao número cadastrado tornam-se rascunhos.
@@ -17,4 +18,5 @@ export const DEMO_PRODUCTS: Product[] = [
   {"id":"f24f24e0-cc51-50e7-84ff-61e953d693c9","name":"Oddish","set_name":"Paldean Fates","card_number":"092/091","category":"Shiny","language":"Inglês","condition":"NM","finish":"Foil","rarity":"Shiny Rare","price_cents":2490,"stock":1,"front_url":"/cards/shiny/oddish-092-091-hq.webp","back_url":"/cards/shiny/oddish-092-091-back.webp","is_published":true},
   {"id": "1acce87e-913b-5a06-8f28-ba258312c070", "name": "Applin", "set_name": "Shining Fates — Shiny Vault", "card_number": "SV012/SV122", "category": "Shiny", "language": "Inglês", "condition": "NM", "finish": "Foil", "rarity": "Shiny", "price_cents": 0, "stock": 0, "front_url": "/cards/shiny/applin-sv012-sv122-hq.webp", "back_url": "", "is_published": false},
   {"id": "40988354-9605-57ee-9ea4-e04e1e27b9dd", "name": "Ditto japonês", "set_name": "Shiny Treasure ex", "card_number": "309/190", "category": "Shiny", "language": "Japonês", "condition": "NM", "finish": "Foil", "rarity": "Shiny", "price_cents": 0, "stock": 0, "front_url": "/cards/shiny/ditto-309-190-jp-hq.webp", "back_url": "/cards/shiny/ditto-309-190-jp-back-hq.webp", "is_published": false},
+  ...VINTAGE_PRODUCTS,
 ];

@@ -10,7 +10,8 @@
     "test:logic": "node tests/business.test.mjs",
     "test:seed": "node tests/shiny-seed.test.mjs",
     "test:delivery1": "node --test tests/delivery-one.test.mjs",
-    "test:delivery2": "node --test tests/delivery-two.test.mjs"
+    "test:delivery2": "node --test tests/delivery-two.test.mjs",
+    "test:vintage": "node --test tests/vintage-catalog.test.mjs"
   },
   "dependencies": {
     "next": "16.4.5",

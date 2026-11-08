@@ -179,6 +179,35 @@ export default function CatalogApp() {
       </section>
 
       <section className="how-section" id="como-funciona"><div className="container"><div className="section-eyebrow"><span className="orange-dash"/> SIMPLES ASSIM</div><h2>Escolha. Adicione.<br/><em>Chame no WhatsApp.</em></h2><div className="how-grid"><div><span className="how-index">01</span><h3>Explore as cartas</h3><p>Filtre por coleção, condição ou idioma e confira os detalhes.</p></div><div><span className="how-index">02</span><h3>Monte seu carrinho</h3><p>Adicione as cartas desejadas e acompanhe o subtotal.</p></div><div><span className="how-index">03</span><h3>Finalize na conversa</h3><p>Envie seu resumo pelo WhatsApp e combine frete e pagamento.</p></div></div></div></section>
+      <section className="et-collector-banner container" aria-labelledby="et-collector-heading">
+        <div className="et-collector-copy">
+          <div className="et-collector-brand">
+            <svg aria-hidden="true" viewBox="0 0 64 64" fill="none" width="42" height="42">
+              <circle cx="32" cy="32" r="29" fill="#fff" stroke="#0B315B" strokeWidth="3"/>
+              <path d="M3 32a29 29 0 0 1 58 0H3Z" fill="#F43336"/>
+              <path d="M3 32h58" stroke="#0B315B" strokeWidth="5"/>
+              <circle cx="32" cy="32" r="10.5" fill="#fff" stroke="#0B315B" strokeWidth="4"/>
+            </svg>
+            <span>EDUTRAINER <strong>TCG</strong></span>
+          </div>
+          <div className="et-collector-kicker">COLEÇÃO EM DESTAQUE</div>
+          <h2 id="et-collector-heading">Sua próxima carta favorita pode estar <em>aqui.</em></h2>
+          <p>Cartas selecionadas, imagens em alta qualidade e atendimento direto pelo WhatsApp.</p>
+          <div className="et-collector-actions">
+            <a className="et-collector-primary" href="#catalogo">Ver catálogo <ArrowRight size={18} aria-hidden="true"/></a>
+            {CONTACT_URL && <a className="et-collector-secondary" href={CONTACT_URL} target="_blank" rel="noopener noreferrer">Falar no WhatsApp <ExternalLink size={16} aria-hidden="true"/></a>}
+          </div>
+        </div>
+        <div className="et-collector-visual">
+          <img
+            src="/banners/edutrainer-pokebola-photo.avif"
+            width="520" height="313" loading="lazy" decoding="async"
+            alt="Imagem ilustrativa de fichário com cartas Pokémon Shiny e colecionador segurando uma carta Lucario"
+            onError={event => {event.currentTarget.onerror=null;event.currentTarget.src="/cards/shiny/lucario-174-091-front.webp";}}
+          />
+          <span className="et-collector-caption">Imagem ilustrativa · confira as fotos individuais no catálogo</span>
+        </div>
+      </section>
     </main>
     <footer className="footer"><div className="container footer-top"><div className="footer-brand"><span className="brand-mark">E<span className="brand-dot">.</span></span><div><strong>EDUTRAINER TCG</strong><span>Feito para quem coleciona.</span></div></div><div className="footer-links"><a href="#catalogo">Catálogo</a><a href="#como-funciona">Como comprar</a>{CONTACT_URL && <a href={CONTACT_URL} target="_blank" rel="noopener noreferrer" aria-label="Conversar com a EduTrainer TCG pelo WhatsApp">Falar no WhatsApp <ExternalLink size={14}/></a>}<Link href="/admin">Painel admin</Link></div></div><div className="container footer-bottom"><span>© {new Date().getFullYear()} EDUTRAINER TCG</span><span>Os pedidos são confirmados diretamente pelo WhatsApp.</span></div></footer>
     {notice && <div role="status" className="toast"><Check size={17}/>{notice}</div>}

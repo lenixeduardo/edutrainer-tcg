@@ -89,3 +89,27 @@
  .et-card-image-stage{height:min(49dvh,460px);min-height:220px}
 }
 @media(prefers-reduced-motion:reduce){.et-gallery-switch button{transition:none}}
+
+/* Ampliação 360°: janela de inspeção que abre diretamente pelo botão principal. */
+.et-360-dialog{width:min(820px,100%);height:min(94dvh,960px)}
+.et-360-body{display:flex;align-items:center;justify-content:center;flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:18px 16px;background:#F3F8FF}
+.et-360-dialog .card360{gap:9px}
+.et-360-dialog .card360-stage{width:min(100%,380px,43dvh);touch-action:none}
+.et-360-dialog .card360-actions{flex-shrink:0}
+.et-360-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid #DFEAF7;background:#FFF;padding:12px 18px}
+.et-360-footer span{font-size:11px;color:#476585;line-height:1.5}
+.et-360-footer button,.et-back-to-360{min-height:44px;display:flex;align-items:center;justify-content:center;gap:7px;background:#003A70;color:#fff;border:0;border-radius:10px;padding:10px 14px;font-size:12px;font-weight:750;white-space:nowrap}
+.et-360-footer button:hover,.et-back-to-360:hover{background:#235C9D;color:#fff}
+.et-360-footer button:focus-visible,.et-back-to-360:focus-visible{outline:3px solid #FFCB05;outline-offset:3px}
+@media(max-width:600px){
+ .et-360-dialog{width:100%;height:100dvh;max-height:100dvh;border-radius:0}
+ .et-360-dialog .et-zoom-header{padding-top:calc(10px + env(safe-area-inset-top,0px))}
+ .et-360-body{padding:12px 10px;align-items:flex-start}
+ .et-360-dialog .card360-stage{width:min(100%,320px,39dvh)}
+ .et-360-dialog .card360-actions{width:min(360px,100%);align-self:center}
+ .et-360-footer{flex-direction:column;align-items:stretch;padding:10px 15px calc(12px + env(safe-area-inset-bottom,0px));gap:7px}
+ .et-360-footer span{text-align:center;font-size:10px}
+ .et-360-footer button{width:100%}
+ .et-back-to-360{width:100%}
+}
+@media(prefers-reduced-motion:reduce){.et-360-footer button,.et-back-to-360{transition:none}}

@@ -18,7 +18,8 @@
     "test:contrast": "node --test tests/how-section-contrast.test.mjs",
     "test:hero": "node --test tests/hero-shiny.test.mjs",
     "test:brand": "node --test tests/brand-pokeball.test.mjs",
-    "test:how-photo": "node --test tests/how-photo-section.test.mjs"
+    "test:how-photo": "node --test tests/how-photo-section.test.mjs",
+    "test:360-entry": "node --test tests/enlarge-opens-360.test.mjs"
   },
   "dependencies": {
     "next": "16.4.5",

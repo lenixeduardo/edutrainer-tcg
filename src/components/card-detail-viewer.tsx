@@ -140,7 +140,7 @@ function Card360Dialog({ product, onClose, onZoom }: { product: Product; onClose
     const previousFocus = document.activeElement as HTMLElement | null;
     const dialog = dialogRef.current;
     dialog?.querySelector<HTMLButtonElement>(".et-360-close")?.focus();
-    const onKey = (event: globalThis.KeyboardEvent) => {
+    const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         event.preventDefault();
         event.stopPropagation();

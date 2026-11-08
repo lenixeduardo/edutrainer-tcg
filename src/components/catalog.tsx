@@ -180,7 +180,6 @@ export default function CatalogApp() {
       <section className="how-section" id="como-funciona"><div className="container"><div className="section-eyebrow"><span className="orange-dash"/> SIMPLES ASSIM</div><h2>Escolha. Adicione.<br/><em>Chame no WhatsApp.</em></h2><div className="how-grid"><div><span className="how-index">01</span><h3>Explore as cartas</h3><p>Filtre por coleção, condição ou idioma e confira os detalhes.</p></div><div><span className="how-index">02</span><h3>Monte seu carrinho</h3><p>Adicione as cartas desejadas e acompanhe o subtotal.</p></div><div><span className="how-index">03</span><h3>Finalize na conversa</h3><p>Envie seu resumo pelo WhatsApp e combine frete e pagamento.</p></div></div></div></section>
       <section className="et-collector-banner container" aria-labelledby="et-collector-heading">
         <div className="et-collector-copy">
-          <div className="et-collector-brand"><img className="et-collector-brand-logo" src="/brand/pokeball-horizontal-v3.svg" width="660" height="150" alt="EduTrainer TCG" loading="lazy" decoding="async"/></div>
           <div className="et-collector-kicker">COLEÇÃO EM DESTAQUE</div>
           <h2 id="et-collector-heading">Sua próxima carta favorita pode estar <em>aqui.</em></h2>
           <p>Cartas selecionadas, imagens em alta qualidade e atendimento direto pelo WhatsApp.</p>

@@ -14,8 +14,10 @@ test("Mantém hero existente e inclui banner antes do footer",()=>{
   assert.ok(ui.indexOf('className="et-collector-banner')<ui.indexOf('<footer'));
   assert.match(ui,/Sua próxima carta favorita pode estar/);
 });
-test("Banner tem Pokébola, foto local e ambos os links funcionais",()=>{
-  assert.ok(ui.includes('src="/brand/pokeball-horizontal-v3.svg"'));
+test("Banner contém fotografia local e ambos os links, sem logo repetido",()=>{
+  const banner=ui.slice(ui.indexOf('className="et-collector-banner'),ui.indexOf("</section>",ui.indexOf('className="et-collector-banner'));
+  assert.doesNotMatch(banner,/et-collector-brand|pokeball-horizontal-v3\.svg/);
+  assert.match(banner,/COLEÇÃO EM DESTAQUE/);
   assert.match(ui,/edutrainer-collector-photo-hd-v2\.avif/);
   assert.match(ui,/href="#catalogo"/);
   assert.match(ui,/et-collector-secondary" href=\{CONTACT_URL\}/);

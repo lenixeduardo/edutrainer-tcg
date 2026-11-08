@@ -6,6 +6,7 @@ import "./card-detail.css";
 import "./customer-checkout.css";
 import "./hero-shiny.css";
 import "./collector-banner.css";
+import "./how-photo-section.css";
 
 export const metadata: Metadata = {
   title: "EduTrainer TCG | Cartas Pokémon",

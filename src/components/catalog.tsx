@@ -177,7 +177,27 @@ export default function CatalogApp() {
             <div className="no-results"><Search size={28}/><h3>Nenhuma carta encontrada</h3><p>Tente alterar os filtros ou explorar todas as cartas disponíveis.</p><button type="button" onClick={resetFilters}>Limpar filtros <RotateCcw size={15}/></button></div>}
       </section>
 
-      <section className="how-section" id="como-funciona"><div className="container"><div className="section-eyebrow"><span className="orange-dash"/> SIMPLES ASSIM</div><h2>Escolha. Adicione.<br/><em>Chame no WhatsApp.</em></h2><div className="how-grid"><div><span className="how-index">01</span><h3>Explore as cartas</h3><p>Filtre por coleção, condição ou idioma e confira os detalhes.</p></div><div><span className="how-index">02</span><h3>Monte seu carrinho</h3><p>Adicione as cartas desejadas e acompanhe o subtotal.</p></div><div><span className="how-index">03</span><h3>Finalize na conversa</h3><p>Envie seu resumo pelo WhatsApp e combine frete e pagamento.</p></div></div></div></section>
+      <section className="how-section how-photo-section" id="como-funciona" aria-labelledby="como-funciona-heading">
+        <div className="container how-photo-layout">
+          <div className="how-photo-intro">
+            <div className="section-eyebrow"><span className="orange-dash"/> SIMPLES ASSIM</div>
+            <h2 id="como-funciona-heading">Escolha. Adicione.<br/><em>Chame no WhatsApp.</em></h2>
+          </div>
+          <figure className="how-photo-visual">
+            <picture>
+              <source media="(max-width: 700px)" srcSet="/banners/como-comprar-mobile-v1.webp" type="image/webp"/>
+              <img src="/banners/como-comprar-desktop-v1.webp" width="1536" height="864"
+                alt="Pessoa segurando cartas Pokémon protegidas em capas transparentes diante de uma loja de colecionáveis"
+                loading="lazy" decoding="async"/>
+            </picture>
+          </figure>
+          <div className="how-grid how-photo-steps">
+            <div className="how-photo-step"><span className="how-index">01</span><div><h3>Explore as cartas</h3><p>Filtre por coleção, condição ou idioma e confira os detalhes.</p></div></div>
+            <div className="how-photo-step"><span className="how-index">02</span><div><h3>Monte seu carrinho</h3><p>Adicione as cartas desejadas e acompanhe o subtotal.</p></div></div>
+            <div className="how-photo-step"><span className="how-index">03</span><div><h3>Finalize na conversa</h3><p>Envie seu resumo pelo WhatsApp e combine frete e pagamento.</p></div></div>
+          </div>
+        </div>
+      </section>
       <section className="et-collector-banner container" aria-labelledby="et-collector-heading">
         <div className="et-collector-copy">
           <div className="et-collector-kicker">COLEÇÃO EM DESTAQUE</div>

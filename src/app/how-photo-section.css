@@ -1,0 +1,154 @@
+/* EduTrainer TCG — seção "Como comprar" com fotografia original do usuário. */
+.how-section.how-photo-section {
+  background: #F3F8FF;
+  border-block: 1px solid #E1EBF7;
+  color: #101E39;
+  padding: clamp(66px, 7.5vw, 102px) 0 clamp(86px, 8.5vw, 118px);
+}
+.how-photo-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.06fr) minmax(0, .94fr);
+  grid-template-rows: auto 1fr;
+  align-items: stretch;
+  column-gap: clamp(28px, 4.2vw, 68px);
+}
+.how-photo-intro { grid-column: 1; grid-row: 1; min-width: 0; }
+.how-photo-section .section-eyebrow {
+  color: #44566E;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  letter-spacing: .23em;
+  font-weight: 800;
+}
+.how-photo-section .section-eyebrow .orange-dash {
+  display: block;
+  height: 3px;
+  width: 30px;
+  background: #3D7DCA;
+  flex: 0 0 auto;
+}
+.how-photo-section h2 {
+  font-size: clamp(36px, 4.3vw, 58px);
+  letter-spacing: -2.6px;
+  line-height: 1.08;
+  color: #0B315B;
+  margin: 20px 0 30px;
+  font-weight: 800;
+}
+.how-photo-section h2 em { color: #3D7DCA; font-style: normal; }
+.how-photo-visual {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  min-width: 0;
+  min-height: 540px;
+  align-self: stretch;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  background: #DCE9F7;
+  border: 1px solid #D6E3F3;
+  box-shadow: 0 20px 48px rgba(0, 58, 112, .13);
+  isolation: isolate;
+}
+.how-photo-visual picture { position: absolute; inset: 0; display: block; }
+.how-photo-visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 78% center;
+  image-rendering: auto;
+}
+.how-photo-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, .55);
+  border-radius: inherit;
+  pointer-events: none;
+}
+.how-photo-section .how-photo-steps {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: end;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.how-photo-section .how-photo-step {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  border-top: 1px solid #C8DDEE;
+  padding: 18px 0 16px;
+  min-width: 0;
+}
+.how-photo-section .how-photo-step:last-child { padding-bottom: 0; }
+.how-photo-section .how-index {
+  color: #235C9D;
+  font-size: 19px;
+  line-height: 1.3;
+  letter-spacing: -.4px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+}
+.how-photo-section .how-photo-step h3 {
+  color: #101E39;
+  margin: 0 0 7px;
+  letter-spacing: -.45px;
+  line-height: 1.25;
+  font-size: 18px;
+}
+.how-photo-section .how-photo-step p {
+  max-width: none;
+  margin: 0;
+  color: #44566E;
+  font-size: 14px;
+  line-height: 1.65;
+}
+@media (max-width: 900px) {
+  .how-photo-layout { column-gap: 24px; grid-template-columns: minmax(0, 1fr) minmax(0, .9fr); }
+  .how-photo-visual { min-height: 510px; }
+  .how-photo-section h2 { font-size: clamp(35px, 4.3vw, 45px); letter-spacing: -1.7px; }
+}
+@media (max-width: 700px) {
+  .how-section.how-photo-section { padding: 58px 0 112px; }
+  .how-photo-layout { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto auto; gap: 22px; }
+  .how-photo-intro { grid-column: 1; grid-row: 1; }
+  .how-photo-section h2 {
+    font-size: clamp(32px, 8vw, 44px);
+    letter-spacing: -1.6px;
+    line-height: 1.1;
+    margin: 17px 0 0;
+  }
+  .how-photo-visual {
+    grid-column: 1;
+    grid-row: 2;
+    min-height: 0;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    border-radius: 18px;
+    box-shadow: 0 12px 27px rgba(0, 58, 112, .12);
+  }
+  .how-photo-visual img { object-position: 56% center; }
+  .how-photo-section .how-photo-steps { grid-column: 1; grid-row: 3; margin-top: 3px; }
+  .how-photo-section .how-photo-step { grid-template-columns: 42px minmax(0, 1fr); gap: 9px; padding: 16px 0 15px; }
+  .how-photo-section .how-photo-step:last-child { padding-bottom: 0; }
+  .how-photo-section .how-index { font-size: 17px; }
+  .how-photo-section .how-photo-step h3 { font-size: 17px; margin: 0 0 5px; }
+  .how-photo-section .how-photo-step p { font-size: 13px; line-height: 1.55; }
+}
+@media (max-width: 360px) {
+  .how-photo-section h2 { font-size: 30px; }
+  .how-photo-layout { gap: 19px; }
+  .how-photo-section .how-photo-step { grid-template-columns: 37px minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .how-photo-section *, .how-photo-section *::after { scroll-behavior: auto; }
+}

@@ -17,7 +17,8 @@
     "test:margin": "node --test tests/min-profit-policy.test.mjs",
     "test:contrast": "node --test tests/how-section-contrast.test.mjs",
     "test:hero": "node --test tests/hero-shiny.test.mjs",
-    "test:brand": "node --test tests/brand-pokeball.test.mjs"
+    "test:brand": "node --test tests/brand-pokeball.test.mjs",
+    "test:how-photo": "node --test tests/how-photo-section.test.mjs"
   },
   "dependencies": {
     "next": "16.4.5",

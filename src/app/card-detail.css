@@ -68,3 +68,24 @@
 .et-art-badge{position:absolute;bottom:3px;left:4px;right:4px;pointer-events:none;z-index:2;padding:4px 5px;background:rgba(255,255,255,.94);color:#003A70;border:1px solid #dbe8f5;border-radius:6px;text-align:center;font:600 9px/1.3 Inter,Arial,sans-serif}
 .et-gallery-switch{grid-template-columns:repeat(4,minmax(0,1fr))}
 @media(max-width:600px){.et-gallery-switch{grid-template-columns:repeat(4,minmax(0,1fr))}.et-gallery-switch button{min-width:0;font-size:10px;padding:7px 2px}.et-art-badge{font-size:8px}}
+
+/* Entrega 2: zoom utilizável por mouse, toque, teclado e pinça. */
+.et-zoom-dialog{max-height:100dvh}
+.et-zoom-header button,.et-zoom-controls button{min-width:44px;min-height:44px}
+.et-zoom-stage{overscroll-behavior:contain}
+.et-zoom-stage img{transform-origin:center center}
+.et-zoom-controls button:not(:disabled):hover{background:#003A70;color:#fff}
+.et-gallery-switch button{min-height:44px}
+.et-gallery-switch button:not(:disabled):hover{transition:background .16s ease,color .16s ease}
+@media(max-width:600px){
+ .et-zoom-backdrop{padding:0}
+ .et-zoom-dialog{height:100dvh;max-height:100dvh;width:100%;border-radius:0}
+ .et-zoom-header{padding:calc(8px + env(safe-area-inset-top,0px)) 15px 10px;min-height:62px}
+ .et-zoom-footer{padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px))}
+ .et-zoom-controls{width:100%;justify-content:center}
+ .et-zoom-header button{flex:0 0 44px}
+ .et-gallery-switch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+ .et-gallery-switch button{font-size:11px;min-height:44px}
+ .et-card-image-stage{height:min(49dvh,460px);min-height:220px}
+}
+@media(prefers-reduced-motion:reduce){.et-gallery-switch button{transition:none}}

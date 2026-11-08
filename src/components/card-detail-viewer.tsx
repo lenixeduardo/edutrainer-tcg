@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, type PointerEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type PointerEvent, type WheelEvent } from "react";
 import { ArrowLeftRight, Image as ImageIcon, Maximize2, Minus, Plus, RotateCcw, X, ZoomIn } from "lucide-react";
 import type { Product } from "@/lib/types";
 import Card360Viewer from "./card-360-viewer";
@@ -37,16 +37,35 @@ function ZoomDialog({ src, alt, onClose, info, isReference = false }: { src: str
   const fingers = useRef(new Map<number, { x: number; y: number }>());
   const pinch = useRef<{ distance: number; scale: number } | null>(null);
   const [panning, setPanning] = useState(false);
+  const dialogRef = useRef<HTMLElement | null>(null);
+  const stageRef = useRef<HTMLDivElement | null>(null);
+  const startPositions = useRef(new Map<number, { x: number; y: number }>());
+  const lastTap = useRef<{ time: number; x: number; y: number } | null>(null);
+  const panBounds = (nextScale: number) => {
+    const node = stageRef.current;
+    return { x: (node?.clientWidth ?? 0) * (nextScale - 1) / 2, y: (node?.clientHeight ?? 0) * (nextScale - 1) / 2 };
+  };
+  useEffect(() => { if (scale <= 1) setPan({ x: 0, y: 0 }); }, [scale]);
 
   useEffect(() => {
+    const previousFocus = document.activeElement as HTMLElement | null;
+    const dialog = dialogRef.current;
+    dialog?.querySelector<HTMLButtonElement>("button")?.focus();
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") { event.stopPropagation(); onClose(); }
+      if (event.key === "Tab" && dialog) {
+        const buttons = [...dialog.querySelectorAll<HTMLButtonElement>("button:not(:disabled)")];
+        if (buttons.length) {
+          if (event.shiftKey && document.activeElement === buttons[0]) { event.preventDefault(); buttons[buttons.length - 1].focus(); }
+          else if (!event.shiftKey && document.activeElement === buttons[buttons.length - 1]) { event.preventDefault(); buttons[0].focus(); }
+        }
+      }
+      if (event.key === "Escape") { event.preventDefault(); event.stopPropagation(); onClose(); }
       if (event.key === "+" || event.key === "=") setScale(v => clamp(v + 0.4, 1, MAX_ZOOM));
       if (event.key === "-") setScale(v => clamp(v - 0.4, 1, MAX_ZOOM));
       if (event.key === "0") { setScale(1); setPan({ x: 0, y: 0 }); }
     };
     window.addEventListener("keydown", onKey, true);
-    return () => window.removeEventListener("keydown", onKey, true);
+    return () => { window.removeEventListener("keydown", onKey, true); previousFocus?.focus(); };
   }, [onClose]);
 
   const zoom = (delta: number) => {
@@ -59,10 +78,12 @@ function ZoomDialog({ src, alt, onClose, info, isReference = false }: { src: str
   const onDown = (event: PointerEvent<HTMLDivElement>) => {
     event.currentTarget.setPointerCapture(event.pointerId);
     fingers.current.set(event.pointerId, { x: event.clientX, y: event.clientY });
-    setPanning(true);
+    startPositions.current.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    setPanning(scale > 1);
     if (fingers.current.size === 2) {
       const [a,b] = [...fingers.current.values()];
       pinch.current = { distance: Math.hypot(a.x - b.x, a.y - b.y), scale };
+      lastTap.current = null;
     }
   };
   const onMove = (event: PointerEvent<HTMLDivElement>) => {
@@ -74,10 +95,23 @@ function ZoomDialog({ src, alt, onClose, info, isReference = false }: { src: str
       const distance = Math.hypot(a.x - b.x, a.y - b.y);
       if (pinch.current && pinch.current.distance > 0) setScale(clamp(pinch.current.scale * distance / pinch.current.distance, 1, MAX_ZOOM));
     } else if (scale > 1) {
-      setPan(current => ({ x: current.x + event.clientX - previous.x, y: current.y + event.clientY - previous.y }));
+      const limit = panBounds(scale);
+      setPan(current => ({ x: clamp(current.x + event.clientX - previous.x, -limit.x, limit.x), y: clamp(current.y + event.clientY - previous.y, -limit.y, limit.y) }));
     }
   };
   const onUp = (event: PointerEvent<HTMLDivElement>) => {
+    const start = startPositions.current.get(event.pointerId);
+    const tap = event.pointerType === "touch" && fingers.current.size === 1 && start &&
+      Math.hypot(start.x - event.clientX, start.y - event.clientY) < 12;
+    startPositions.current.delete(event.pointerId);
+    if (tap) {
+      const now = performance.now();
+      const last = lastTap.current;
+      if (last && now - last.time < 320 && Math.hypot(last.x - event.clientX, last.y - event.clientY) < 30) {
+        setScale(current => current > 1 ? 1 : 2.5);
+        lastTap.current = null;
+      } else lastTap.current = { time: now, x: event.clientX, y: event.clientY };
+    }
     fingers.current.delete(event.pointerId);
     if (fingers.current.size < 2) pinch.current = null;
     if (fingers.current.size === 0) setPanning(false);
@@ -85,12 +119,12 @@ function ZoomDialog({ src, alt, onClose, info, isReference = false }: { src: str
   };
 
   return <div className="et-zoom-backdrop" data-zoom-open="true" role="presentation" onMouseDown={event => { if (event.target === event.currentTarget) onClose(); }}>
-    <section className="et-zoom-dialog" role="dialog" aria-modal="true" aria-label="Ampliação da imagem da carta">
+    <section ref={dialogRef} className="et-zoom-dialog" role="dialog" aria-modal="true" aria-label="Ampliação da imagem da carta">
       <header className="et-zoom-header"><div><strong>{isReference ? "Ampliar arte da edição" : "Inspecionar imagem"}</strong><span>{info ? `${info.width} × ${info.height} px · ${isReference ? "referência digital" : "imagem enviada"}` : "Carregando resolução"}</span></div><button type="button" aria-label="Fechar ampliação" onClick={onClose}><X size={21}/></button></header>
-      <div className={`et-zoom-stage${panning ? " is-panning" : ""}`} onPointerDown={onDown} onPointerMove={onMove} onPointerUp={onUp} onPointerCancel={onUp} onDoubleClick={() => zoom(scale > 1 ? -MAX_ZOOM : 1.5)}>
+      <div ref={stageRef} className={`et-zoom-stage${panning ? " is-panning" : ""}`} onPointerDown={onDown} onPointerMove={onMove} onPointerUp={onUp} onPointerCancel={onUp} onWheel={(event: WheelEvent<HTMLDivElement>) => { event.preventDefault(); setScale(current => clamp(current - event.deltaY * 0.003, 1, MAX_ZOOM)); }} onDoubleClick={() => zoom(scale > 1 ? -MAX_ZOOM : 1.5)}>
         <img src={src} alt={alt} draggable={false} style={{ transform: `translate(${pan.x}px,${pan.y}px) scale(${scale})` }} />
       </div>
-      <footer className="et-zoom-footer"><span>Arraste para mover · pinça para ampliar · duplo toque/clique</span><div className="et-zoom-controls"><button type="button" aria-label="Diminuir zoom" onClick={() => zoom(-0.5)} disabled={scale === 1}><Minus size={17}/></button><output aria-label="Nível de zoom">{Math.round(scale * 100)}%</output><button type="button" aria-label="Aumentar zoom" onClick={() => zoom(0.5)} disabled={scale === MAX_ZOOM}><Plus size={17}/></button><button type="button" aria-label="Restaurar zoom" onClick={() => { setScale(1); setPan({x:0,y:0}); }}><RotateCcw size={17}/></button></div></footer>
+      <footer className="et-zoom-footer"><span>Pinça, roda do mouse ou duplo toque para ampliar; arraste para mover</span><div className="et-zoom-controls"><button type="button" aria-label="Diminuir zoom" onClick={() => zoom(-0.5)} disabled={scale === 1}><Minus size={17}/></button><output aria-label="Nível de zoom" aria-live="polite">{Math.round(scale * 100)}%</output><button type="button" aria-label="Aumentar zoom" onClick={() => zoom(0.5)} disabled={scale === MAX_ZOOM}><Plus size={17}/></button><button type="button" aria-label="Restaurar zoom" onClick={() => { setScale(1); setPan({x:0,y:0}); }}><RotateCcw size={17}/></button></div></footer>
       {isReference ? <p className="et-zoom-resolution-warning">Arte digital de referência: não comprova a condição NM do exemplar vendido.</p> : info && info.width < MIN_INSPECTION_WIDTH && <p className="et-zoom-resolution-warning">A imagem enviada tem resolução limitada. Ampliar não recupera detalhes da impressão; solicite uma fotografia individual em alta resolução.</p>}
     </section>
   </div>;

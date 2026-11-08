@@ -21,3 +21,18 @@
 .modal-photo:has(.card360){background:#F6F9FE;padding:22px 19px;gap:0;overflow-x:hidden}
 @media(max-width:600px){.modal-photo .card360-stage{width:min(100%,240px,30vh);height:auto;max-height:none}.card360{gap:7px}.card360-actions button{padding:6px 10px;font-size:10px;min-height:30px}.card360-status{font-size:9px}.card360-hint{font-size:10px}}
 @media(prefers-reduced-motion:reduce){.card360-card{transition:none!important;will-change:auto}}
+
+/* Entrega 2: animação iniciada pelo usuário e executada apenas na área visível. */
+.card360-card{will-change:auto}
+.card360-playing .card360-card,.card360-dragging .card360-card{will-change:transform}
+.card360-actions button{min-height:44px;transition:background-color .18s ease,color .18s ease,transform .18s ease}
+.card360-actions button:not(:disabled):hover{background:#003A70;color:#fff}
+.card360-actions button:not(:disabled):active{transform:scale(.97)}
+.card360-actions button.active:hover{color:#fff}
+@media(max-width:600px){
+ .modal-photo .card360-stage{width:min(100%,305px,43dvh);height:auto;max-height:none}
+ .card360-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px;width:100%;border-radius:14px;padding:6px}
+ .card360-actions button{justify-content:center;min-height:44px;font-size:11px;padding:8px 10px}
+ .card360-actions .card360-reset{grid-column:1/-1}
+}
+@media(prefers-reduced-motion:reduce){.card360-actions button{transition:none}}

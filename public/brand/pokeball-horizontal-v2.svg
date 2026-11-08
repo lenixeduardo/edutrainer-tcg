@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="150" viewBox="0 0 660 150" role="img" aria-labelledby="t"><title id="t">EduTrainer TCG</title><defs>
+ <linearGradient id="red" x1="0" y1="0" x2=".35" y2="1"><stop stop-color="#FF7371"/><stop offset=".3" stop-color="#F9282D"/><stop offset=".72" stop-color="#DB0619"/><stop offset="1" stop-color="#8C0210"/></linearGradient>
+ <linearGradient id="white" x1="0" y1="0" x2=".3" y2="1"><stop stop-color="#FFFFFF"/><stop offset=".5" stop-color="#F5F8FA"/><stop offset="1" stop-color="#A6B3C4"/></linearGradient>
+ <radialGradient id="gloss" cx=".3" cy=".17" r=".65"><stop stop-color="#FFF" stop-opacity=".8"/><stop offset=".6" stop-color="#FFF" stop-opacity=".1"/><stop offset="1" stop-color="#FFF" stop-opacity="0"/></radialGradient>
+ <linearGradient id="navy" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#103B72"/><stop offset="1" stop-color="#001A3A"/></linearGradient>
+ <linearGradient id="blue" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#1F8AFF"/><stop offset="1" stop-color="#0051CD"/></linearGradient>
+ <clipPath id="disc"><circle cx="75" cy="81" r="54"/></clipPath>
+ </defs><g stroke="#FFCB05" stroke-width="10" stroke-linecap="round"><path d="M19 40 8 34"/><path d="M31 23 19 9"/><path d="M52 14 47 2"/></g>
+ <ellipse cx="76" cy="139" rx="47" ry="5" fill="#003A70" opacity=".12"/>
+ <circle cx="75" cy="81" r="55" fill="#111926"/>
+ <g clip-path="url(#disc)">
+   <rect x="19" y="24" width="112" height="58" fill="url(#red)"/>
+   <rect x="19" y="81" width="112" height="58" fill="url(#white)"/>
+   <rect x="19" y="73" width="112" height="17" fill="#12151B"/>
+   <ellipse cx="55" cy="51" rx="37" ry="24" fill="url(#gloss)" transform="rotate(-20 55 51)"/>
+   <path d="M35 110 Q75 145 118 105" fill="none" stroke="#FFF" stroke-opacity=".35" stroke-width="6"/>
+ </g>
+ <circle cx="75" cy="81" r="21" fill="#151C25"/>
+ <circle cx="75" cy="81" r="15.5" fill="#D4DBE3"/>
+ <circle cx="75" cy="81" r="12" fill="url(#white)" stroke="#FFF" stroke-width="1"/>
+ <ellipse cx="70" cy="76" rx="6" ry="4" transform="rotate(-30 70 76)" fill="#FFF" opacity=".8"/>
+ <g font-family="Inter,Arial,Helvetica,sans-serif" font-weight="900" letter-spacing="-1.5">
+ <text x="153" y="105" font-size="64" fill="url(#navy)" textLength="337" lengthAdjust="spacingAndGlyphs">EduTrainer</text>
+ <text x="501" y="105" font-size="65" fill="url(#blue)" textLength="151" lengthAdjust="spacingAndGlyphs">TCG</text></g>
+ </svg>

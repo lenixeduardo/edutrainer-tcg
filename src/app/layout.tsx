@@ -10,6 +10,7 @@ import "./collector-banner.css";
 export const metadata: Metadata = {
   title: "EduTrainer TCG | Cartas Pokémon",
   description: "Catálogo de cartas Pokémon colecionáveis. Selecione suas cartas e consulte a compra pelo WhatsApp.",
+  icons: { icon: "/brand/pokeball-mark-v2.svg", shortcut: "/brand/pokeball-mark-v2.svg" },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

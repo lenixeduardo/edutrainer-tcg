@@ -18,6 +18,7 @@ jobs:
         env:
           SOURCE_URL: 'https://media.canva.com/v2/image-resize/format:PNG/height:112/quality:100/uri:ifs%3A%2F%2FM%2F184ad05a-6cc4-4acc-8178-20301e2acdd2/watermark:F/width:200?csig=AAAAAAAAAAAAAAAAAAAAAOnV9gW0Ritb0jMTxGNxY5ePU5mqkagzwvaYf43TBDiP&exp=1794140235&osig=AAAAAAAAAAAAAAAAAAAAAM6b2s73a8qISgICPvlHRIXdnp6h9e6_3Xk4vIvQ4Qhn&signer=media-rpc&token=AAIAAU0AJDE4NGFkMDVhLTZjYzQtNGFjYy04MTc4LTIwMzAxZTJhY2RkMgAAAAABobsXZPjCJji4WUjnP8n0IkRcS-d7TRHF5xz-8Zvt7PBJGbjgfQ&x-canva-quality=thumbnail'
         run: |
+          python - <<'PY'
           import os, io, sys, requests
           from PIL import Image
           from urllib.parse import urlsplit, urlunsplit, parse_qsl, urlencode
@@ -50,6 +51,7 @@ jobs:
           crop=found.crop((round(w*.344),round(h*.032),w,round(h*.935)))
           crop.save("public/hero/shiny-album-mobile.webp",format="WEBP",quality=79,method=6)
           print("Image assets written",found.size,crop.size,flush=True)
+          PY
       - name: Commit image assets to main
         run: |
           git config user.name "github-actions[bot]"

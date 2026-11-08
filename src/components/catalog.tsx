@@ -106,7 +106,7 @@ export default function CatalogApp() {
     if (product.price_cents <= 0) { setSelected(product); return; }
     if (product.stock <= (cart[product.id] || 0)) { alert("Você já selecionou todas as unidades disponíveis."); return; }
     setCart(current => updateCart(current, product, 1));
-    alert(`${product.name} adicionado ao carrinho de demonstração`);
+    setNotice(`${product.name} adicionado ao carrinho.`);
   };
   const detail = (product: Product) => { setSelected(product); };
   const resetFilters = () => { setQuery(""); setCategory("Todas"); setCondition("Todas"); setLanguage("Todos"); setCollection("Todas as coleções"); setSort("price-desc"); setInStock(false); };
@@ -143,7 +143,7 @@ export default function CatalogApp() {
       <div className="header-actions"><button className="cart-trigger" type="button" onClick={() => setCartOpen(true)} aria-label={`Abrir carrinho com ${count} cartas`}><ShoppingBag size={21} strokeWidth={1.8}/>{count > 0 && <span className="cart-bubble">{count}</span>}</button><button className="mobile-menu-button" type="button" aria-label="Abrir menu" onClick={() => setMobileMenu(!mobileMenu)}>{mobileMenu ? <X size={23}/> : <Menu size={23}/>}</button></div>
     </div></header>
 
-    {isDemo && <div className="demo-bar"><strong>AMBIENTE DE DEMONSTRAÇÃO</strong><span>Catálogo de demonstração com novas cartas Evolutions, Gym Heroes, Neo Revelation e Base Set. Condição NM declarada pelo vendedor; estoque, acabamento e versos físicos devem ser confirmados.</span><Link href="/admin">Editar catálogo demo <ArrowRight size={14}/></Link></div>}
+    
 
     <main>
       <section className="hero container" id="inicio">

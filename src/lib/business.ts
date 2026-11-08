@@ -23,7 +23,7 @@ export const reconcileCart = (cart: Cart, products: Product[]): Cart => {
   const next: Cart = {};
   for (const [id, raw] of Object.entries(cart)) {
     const item = byId.get(id);
-    if (item && item.is_published && item.stock > 0 && Number.isFinite(raw)) {
+    if (item && item.is_published && item.stock > 0 && item.price_cents > 0 && Number.isFinite(raw)) {
       const quantity = Math.max(0, Math.min(item.stock, Math.trunc(raw)));
       if (quantity > 0) next[id] = quantity;
     }
@@ -37,7 +37,7 @@ export const cartTotal = (cart: Cart, products: Product[]): number =>
 export const cartCount = (cart: Cart): number => Object.values(cart).reduce((a, b) => a + Math.max(0, b), 0);
 
 export const whatsAppMessage = (cart: Cart, products: Product[]): string => {
-  const selected = products.filter(product => getQuantity(cart, product.id) > 0);
+  const selected = products.filter(product => product.price_cents > 0 && getQuantity(cart, product.id) > 0);
   if (selected.length === 0) return "";
   const lines = ["Olá! Quero consultar a disponibilidade destas cartas da EduTrainer TCG:", ""];
   for (const [index, product] of selected.entries()) {

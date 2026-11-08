@@ -8,8 +8,8 @@ const protectedItemPrice = (seed:Product, oldPrice:number):number => {
   return floor !== null ? Math.max(floor,seed.price_cents,Number.isFinite(oldPrice)?oldPrice:0) : oldPrice;
 };
 
-const KEY = "edutrainer:demo-products:v7";
-const LEGACY_KEYS = ["edutrainer:demo-products:v6", "edutrainer:demo-products:v5", "edutrainer:demo-products:v4", "edutrainer:demo-products:v3", "edutrainer:demo-products:v2", "edutrainer:demo-products:v1"] as const;
+const KEY = "edutrainer:demo-products:v8";
+const LEGACY_KEYS = ["edutrainer:demo-products:v7", "edutrainer:demo-products:v6", "edutrainer:demo-products:v5", "edutrainer:demo-products:v4", "edutrainer:demo-products:v3", "edutrainer:demo-products:v2", "edutrainer:demo-products:v1"] as const;
 
 export async function loadProducts(): Promise<Product[]> {
   if (isDemo) {
@@ -28,7 +28,7 @@ export async function loadProducts(): Promise<Product[]> {
         const saved = previous.find(item => item.id === seed.id);
         return saved ? enforcePriceFloor({ ...seed, price_cents: protectedItemPrice(seed, saved.price_cents), stock: saved.stock, is_published: saved.is_published }) : seed;
       });
-      for (const oldProduct of previous) if (!merged.some(item => item.id === oldProduct.id)) merged.push(oldProduct);
+      for (const oldProduct of previous) if (!merged.some(item => item.id === oldProduct.id)) merged.push(enforcePriceFloor(oldProduct));
       localStorage.setItem(KEY, JSON.stringify(merged));
       return merged;
     }
@@ -37,7 +37,7 @@ export async function loadProducts(): Promise<Product[]> {
   const db = supabase()!;
   const { data, error } = await db.from("products").select("*").order("created_at", { ascending: false });
   if (error) throw new Error(`Falha ao carregar catálogo: ${error.message}`);
-  return data as Product[];
+  return (data as Product[]).map(enforcePriceFloor);
 }
 
 export async function saveProduct(product: Product): Promise<void> {

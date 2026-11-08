@@ -13,6 +13,12 @@ import type { Product } from "./types";
  * validação autenticada no servidor de uma futura operação com pagamento.
  */
 export const MIN_PROFIT_CENTS = 2000;
+/**
+ * Valor mínimo de triagem para anúncios SEM custo conhecido.
+ * Não equivale a R$20 de lucro; sem custo documentado essa margem não pode
+ * ser comprovada. Abaixo desse valor o item vira "Sob consulta" (preço 0).
+ */
+export const MIN_UNVERIFIED_LISTING_CENTS = 2300;
 const PRICE_FLOORS: Readonly<Record<string,number>> = {
   "e56c6eef-2a78-55d6-ad6b-b8e2952b25a1": 16490, // Mewtwo 051/108
   "d52a89b0-f932-569e-98a3-41a6d22b88d2": 7990, // Pikachu 035/108
@@ -30,11 +36,18 @@ export function minimumSalePrice(product:Pick<Product,"id">): number | null {
 export function priceBelowPolicy(product:Pick<Product,"id"|"price_cents">):boolean {
   const floor=minimumSalePrice(product);
   // Preço 0 indica "Sob consulta", não venda gratuita.
-  return floor !== null && product.price_cents > 0 && product.price_cents < floor;
+  if (product.price_cents <= 0) return false;
+  return floor !== null
+    ? product.price_cents < floor
+    : product.price_cents < MIN_UNVERIFIED_LISTING_CENTS;
 }
 
 export function enforcePriceFloor<T extends Product>(product:T):T {
   const floor=minimumSalePrice(product);
-  if (floor === null || product.price_cents===0 || product.price_cents>=floor) return product;
-  return {...product,price_cents:floor};
+  if (product.price_cents <= 0) return product;
+  if (floor !== null) return product.price_cents < floor ? {...product,price_cents:floor} : product;
+  // Não inventar um preço de venda ou lucro sem conhecer o custo da carta.
+  return product.price_cents < MIN_UNVERIFIED_LISTING_CENTS
+    ? {...product,price_cents:0}
+    : product;
 }

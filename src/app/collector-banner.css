@@ -73,3 +73,5 @@
 .et-collector-brand{margin-bottom:14px;max-width:100%}
 .et-collector-brand-logo{display:block;width:min(270px,100%);height:auto;aspect-ratio:660/150;object-fit:contain;object-position:left center}
 @media(max-width:600px){.et-collector-brand-logo{width:min(230px,100%)}}
+
+.et-collector-brand-logo{image-rendering:auto;filter:none;transform:none}

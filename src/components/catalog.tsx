@@ -48,7 +48,6 @@ function ProductCard({ product, onSelect, onAdd }: { product: Product; onSelect:
       <div className="et-product-meta"><span className="et-category-pill">{product.category}</span><span className="et-condition-pill">{product.condition}</span></div>
       <button type="button" onClick={() => onSelect(product)} className="product-title">{product.name}</button>
       <p className="product-kicker">{product.set_name} · {product.card_number}</p>
-      <p className="et-product-media">{getCardReference(product) ? "Arte digital da edição" : "Imagem enviada"} · inspecione no detalhe</p>
       <div className="product-bottom"><span className={`price${quoteRequired ? " price-on-request" : ""}`}>{quoteRequired ? "Sob consulta" : money(product.price_cents)}</span>
         <button type="button" className="add-button" aria-label={`Adicionar ${product.name} ao carrinho`} disabled={out} onClick={() => quoteRequired ? onSelect(product) : onAdd(product)}>{quoteRequired ? <ExternalLink size={15}/> : <Plus size={15}/>} {quoteRequired ? "Consultar" : "Carrinho"}</button>
       </div>
@@ -137,7 +136,7 @@ export default function CatalogApp() {
 
   return <div className="site-shell">
     <header className="site-header"><div className="container header-inside">
-      <Link href="/" className="brand" aria-label="EduTrainer TCG, página inicial"><img src="/brand/pokeball-horizontal-v2.svg" width="660" height="150" alt="EduTrainer TCG" /></Link>
+      <Link href="/" className="brand" aria-label="EduTrainer TCG, página inicial"><img src="/brand/pokeball-horizontal-v3.svg" width="660" height="150" alt="EduTrainer TCG" /></Link>
       <span className="header-tagline">Cartas colecionáveis<small>Catálogo de produtos</small></span>
       <nav className={`desktop-nav ${mobileMenu ? "nav-visible" : ""}`} aria-label="Navegação principal"><a className="nav-active" href="#inicio" onClick={() => setMobileMenu(false)}>Início</a><a href="#catalogo" onClick={() => setMobileMenu(false)}>Catálogo</a><a href="#como-funciona" onClick={() => setMobileMenu(false)}>Como comprar</a><Link href="/admin">Painel admin</Link></nav>
       <div className="header-actions"><button className="cart-trigger" type="button" onClick={() => setCartOpen(true)} aria-label={`Abrir carrinho com ${count} cartas`}><ShoppingBag size={21} strokeWidth={1.8}/>{count > 0 && <span className="cart-bubble">{count}</span>}</button><button className="mobile-menu-button" type="button" aria-label="Abrir menu" onClick={() => setMobileMenu(!mobileMenu)}>{mobileMenu ? <X size={23}/> : <Menu size={23}/>}</button></div>
@@ -181,7 +180,7 @@ export default function CatalogApp() {
       <section className="how-section" id="como-funciona"><div className="container"><div className="section-eyebrow"><span className="orange-dash"/> SIMPLES ASSIM</div><h2>Escolha. Adicione.<br/><em>Chame no WhatsApp.</em></h2><div className="how-grid"><div><span className="how-index">01</span><h3>Explore as cartas</h3><p>Filtre por coleção, condição ou idioma e confira os detalhes.</p></div><div><span className="how-index">02</span><h3>Monte seu carrinho</h3><p>Adicione as cartas desejadas e acompanhe o subtotal.</p></div><div><span className="how-index">03</span><h3>Finalize na conversa</h3><p>Envie seu resumo pelo WhatsApp e combine frete e pagamento.</p></div></div></div></section>
       <section className="et-collector-banner container" aria-labelledby="et-collector-heading">
         <div className="et-collector-copy">
-          <div className="et-collector-brand"><img className="et-collector-brand-logo" src="/brand/pokeball-horizontal-v2.svg" width="660" height="150" alt="EduTrainer TCG" loading="lazy" decoding="async"/></div>
+          <div className="et-collector-brand"><img className="et-collector-brand-logo" src="/brand/pokeball-horizontal-v3.svg" width="660" height="150" alt="EduTrainer TCG" loading="lazy" decoding="async"/></div>
           <div className="et-collector-kicker">COLEÇÃO EM DESTAQUE</div>
           <h2 id="et-collector-heading">Sua próxima carta favorita pode estar <em>aqui.</em></h2>
           <p>Cartas selecionadas, imagens em alta qualidade e atendimento direto pelo WhatsApp.</p>
@@ -200,7 +199,7 @@ export default function CatalogApp() {
         </div>
       </section>
     </main>
-    <footer className="footer"><div className="container footer-top"><div className="footer-brand et-footer-brand"><Link href="/" className="et-footer-logo" aria-label="EduTrainer TCG, voltar ao início"><img src="/brand/pokeball-horizontal-v2.svg" width="660" height="150" alt="EduTrainer TCG" loading="lazy" decoding="async"/></Link><span className="et-footer-tagline">Feito para quem coleciona.</span></div><div className="footer-links"><a href="#catalogo">Catálogo</a><a href="#como-funciona">Como comprar</a>{CONTACT_URL && <a href={CONTACT_URL} target="_blank" rel="noopener noreferrer" aria-label="Conversar com a EduTrainer TCG pelo WhatsApp">Falar no WhatsApp <ExternalLink size={14}/></a>}<Link href="/admin">Painel admin</Link></div></div><div className="container footer-bottom"><span>© {new Date().getFullYear()} EDUTRAINER TCG</span><span>Os pedidos são confirmados diretamente pelo WhatsApp.</span></div></footer>
+    <footer className="footer"><div className="container footer-top"><div className="footer-brand et-footer-brand"><Link href="/" className="et-footer-logo" aria-label="EduTrainer TCG, voltar ao início"><img src="/brand/pokeball-horizontal-v3.svg" width="660" height="150" alt="EduTrainer TCG" loading="lazy" decoding="async"/></Link><span className="et-footer-tagline">Feito para quem coleciona.</span></div><div className="footer-links"><a href="#catalogo">Catálogo</a><a href="#como-funciona">Como comprar</a>{CONTACT_URL && <a href={CONTACT_URL} target="_blank" rel="noopener noreferrer" aria-label="Conversar com a EduTrainer TCG pelo WhatsApp">Falar no WhatsApp <ExternalLink size={14}/></a>}<Link href="/admin">Painel admin</Link></div></div><div className="container footer-bottom"><span>© {new Date().getFullYear()} EDUTRAINER TCG</span><span>Os pedidos são confirmados diretamente pelo WhatsApp.</span></div></footer>
     {notice && <div role="status" className="toast"><Check size={17}/>{notice}</div>}
     {count > 0 && !cartOpen && <button type="button" className="floating-cart" onClick={() => setCartOpen(true)}><ShoppingBag size={18}/> Ver carrinho <span>{count}</span><ArrowRight size={17}/></button>}
 

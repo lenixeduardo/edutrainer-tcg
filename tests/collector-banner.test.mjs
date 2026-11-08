@@ -15,7 +15,7 @@ test("Mantém hero existente e inclui banner antes do footer",()=>{
   assert.match(ui,/Sua próxima carta favorita pode estar/);
 });
 test("Banner tem Pokébola, foto local e ambos os links funcionais",()=>{
-  assert.ok(ui.includes('src="/brand/pokeball-horizontal-v2.svg"'));
+  assert.ok(ui.includes('src="/brand/pokeball-horizontal-v3.svg"'));
   assert.match(ui,/edutrainer-collector-photo-hd-v2\.avif/);
   assert.match(ui,/href="#catalogo"/);
   assert.match(ui,/et-collector-secondary" href=\{CONTACT_URL\}/);
@@ -34,4 +34,8 @@ test("Responsividade mobile e foco de teclado",()=>{
   assert.match(css,/prefers-reduced-motion/);
   assert.match(css,/#003A70/);
   assert.match(css,/#FFCB05/);
+});
+
+test("Produto não apresenta textos técnicos sobre a imagem ou sob o título",()=> {
+ assert.doesNotMatch(ui,/Arte digital da edição|inspecione no detalhe|et-product-media/);
 });

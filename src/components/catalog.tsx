@@ -16,7 +16,8 @@ import { isDemo } from "@/lib/supabase";
 
 const CATEGORIES = ["Todas", "Shiny", "Arte Rara", "Vintage", "Full Art", "Promo", "Outras"] as const;
 const CART_KEY = "edutrainer:cart:v1";
-const PHONE = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "";
+const PHONE = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5511984477950";
+const CONTACT_URL = whatsAppUrl(PHONE, "Olá! Gostaria de consultar cartas do catálogo EduTrainer TCG.");
 type SortBy = "featured" | "price-asc" | "price-desc" | "name";
 
 function ProductVisual({ product, side = "front", className = "" }: { product: Product; side?: "front" | "back"; className?: string }) {
@@ -117,7 +118,7 @@ export default function CatalogApp() {
         return;
       }
       const url = whatsAppUrl(PHONE, whatsAppMessage(reconciled, current));
-      if (!url) { alert("Número comercial ainda não configurado. Copie o pedido para enviar manualmente."); return; }
+      if (!url) { alert("Não foi possível gerar o link do WhatsApp. Copie o pedido para enviar manualmente."); return; }
       window.location.assign(url);
     } catch { alert("Não foi possível confirmar o estoque. Tente novamente."); }
     finally { setSending(false); }
@@ -151,7 +152,7 @@ export default function CatalogApp() {
 
       <section className="how-section" id="como-funciona"><div className="container"><div className="section-eyebrow"><span className="orange-dash"/> SIMPLES ASSIM</div><h2>Escolha. Adicione.<br/><em>Chame no WhatsApp.</em></h2><div className="how-grid"><div><span className="how-index">01</span><h3>Explore as cartas</h3><p>Filtre por coleção, condição ou idioma e confira os detalhes.</p></div><div><span className="how-index">02</span><h3>Monte seu carrinho</h3><p>Adicione as cartas desejadas e acompanhe o subtotal.</p></div><div><span className="how-index">03</span><h3>Finalize na conversa</h3><p>Envie seu resumo pelo WhatsApp e combine frete e pagamento.</p></div></div></div></section>
     </main>
-    <footer className="footer"><div className="container footer-top"><div className="footer-brand"><span className="brand-mark">E<span className="brand-dot">.</span></span><div><strong>EDUTRAINER TCG</strong><span>Feito para quem coleciona.</span></div></div><div className="footer-links"><a href="#catalogo">Catálogo</a><a href="#como-funciona">Como comprar</a><Link href="/admin">Painel admin</Link></div></div><div className="container footer-bottom"><span>© {new Date().getFullYear()} EDUTRAINER TCG</span><span>Os pedidos são confirmados diretamente pelo WhatsApp.</span></div></footer>
+    <footer className="footer"><div className="container footer-top"><div className="footer-brand"><span className="brand-mark">E<span className="brand-dot">.</span></span><div><strong>EDUTRAINER TCG</strong><span>Feito para quem coleciona.</span></div></div><div className="footer-links"><a href="#catalogo">Catálogo</a><a href="#como-funciona">Como comprar</a>{CONTACT_URL && <a href={CONTACT_URL} target="_blank" rel="noopener noreferrer" aria-label="Conversar com a EduTrainer TCG pelo WhatsApp">Falar no WhatsApp <ExternalLink size={14}/></a>}<Link href="/admin">Painel admin</Link></div></div><div className="container footer-bottom"><span>© {new Date().getFullYear()} EDUTRAINER TCG</span><span>Os pedidos são confirmados diretamente pelo WhatsApp.</span></div></footer>
     {notice && <div role="status" className="toast"><Check size={17}/>{notice}</div>}
     {count > 0 && !cartOpen && <button type="button" className="floating-cart" onClick={() => setCartOpen(true)}><ShoppingBag size={18}/> Ver carrinho <span>{count}</span><ArrowRight size={17}/></button>}
 

@@ -14,7 +14,8 @@
     "test:vintage": "node --test tests/vintage-catalog.test.mjs",
     "test:vintage-hd": "node --test tests/vintage-hd-reference.test.mjs",
     "test:checkout": "node --test tests/checkout-customer.test.mjs",
-    "test:margin": "node --test tests/min-profit-policy.test.mjs"
+    "test:margin": "node --test tests/min-profit-policy.test.mjs",
+    "test:contrast": "node --test tests/how-section-contrast.test.mjs"
   },
   "dependencies": {
     "next": "16.4.5",

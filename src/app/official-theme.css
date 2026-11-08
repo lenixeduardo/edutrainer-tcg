@@ -57,7 +57,16 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 .add-button:hover{background:#F0BE00;color:#003A70}.add-button svg{stroke-width:3px}
 .sold-layer{border-radius:10px;background:#F5F8FDE6}.sold-layer span{border-radius:10px;background:#003A70}
 .no-results,.empty-cart{background:#F8FBFF}
-.how-section{background:#F3F8FF;border-block:1px solid #E1EBF7}.how-section h2{color:#0B315B}.how-section h2 em{color:#3D7DCA}.how-index{color:#3D7DCA}.how-grid>div{border-top-color:#C3DBF3}
+/* Corrige herança de fontes claras do tema antigo sobre o fundo azul-claro.
+   Regras restritas à seção "Como comprar" do white mode aprovado. */
+.how-section{background:#F3F8FF;border-block:1px solid #E1EBF7;color:#101E39}
+.how-section .section-eyebrow{color:#44566E}
+.how-section h2{color:#0B315B}
+.how-section h2 em{color:#3D7DCA}
+.how-section .how-index{color:#235C9D}
+.how-section .how-grid>div{border-top-color:#C3DBF3}
+.how-section .how-grid h3{color:#101E39}
+.how-section .how-grid p{color:#44566E}
 .footer{background:#003A70;color:#fff}.footer-bottom{color:#D3E3F5}.footer-links a:hover{color:#FFCB05}
 .floating-cart{background:#003A70;color:#fff;border-radius:100px;box-shadow:0 10px 25px #003A7033}
 .drawer-overlay,.overlay{z-index:30}.cart-drawer,.product-modal,.editor-modal{background:#fff}.drawer-bottom{background:#fff;border-top:1px solid #DFEAF7}.subtotal-row strong,.modal-pricing strong{color:#0058BA}.whatsapp-button{background:#FFCB05;color:#003A70}.secondary-button{border:1px solid #B8D2EE;color:#003A70}

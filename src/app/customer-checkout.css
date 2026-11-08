@@ -1,0 +1,36 @@
+/* EduTrainer — Cadastro pré-checkout, white mode */
+.et-checkout-backdrop{position:fixed;inset:0;z-index:220;background:rgba(2,23,49,.66);display:flex;justify-content:center;align-items:center;padding:20px;overscroll-behavior:contain}
+.et-checkout-panel{width:min(760px,100%);max-height:min(94dvh,1000px);overflow:auto;background:#fff;color:#003A70;border-radius:22px;box-shadow:0 25px 85px rgba(0,21,50,.32);overscroll-behavior:contain}
+.et-checkout-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:26px 30px 21px;border-bottom:1px solid #deebf7}
+.et-checkout-head small{color:#3D7DCA;display:block;letter-spacing:.09em;font-weight:800;font-size:10px}
+.et-checkout-head h2{font-size:clamp(24px,4vw,34px);margin:6px 0;line-height:1.15;letter-spacing:-.035em;color:#003A70}
+.et-checkout-head p{font-size:13px;line-height:1.5;color:#5e748d;max-width:520px}
+.et-checkout-head button{border:0;color:#003A70;background:#eaf2fb;border-radius:12px;min-width:44px;height:44px;display:grid;place-items:center;flex-shrink:0}
+.et-checkout-form{padding:22px 30px 26px;display:flex;flex-direction:column;gap:23px}
+.et-checkout-section h3{font-size:15px;color:#003A70;margin:0 0 15px;padding-bottom:8px;border-bottom:1px solid #e8eef6}
+.et-checkout-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px}
+.et-checkout-wide{grid-column:1/-1}
+.et-checkout-field{display:flex;flex-direction:column;min-width:0;gap:7px;color:#234a73;font-size:12px;font-weight:750}
+.et-checkout-field b{color:#a23232}
+.et-checkout-field input{background:#fbfdff;width:100%;min-width:0;border:1px solid #b9cfe5;border-radius:11px;padding:12px 13px;min-height:46px;font-family:inherit;font-size:14px;font-weight:500;color:#123557;outline:none;transition:border-color .16s ease,box-shadow .16s ease}
+.et-checkout-field input::placeholder{color:#879aaf}
+.et-checkout-field input:focus{border-color:#3D7DCA;box-shadow:0 0 0 3px #3D7DCA26}
+.et-checkout-field input[aria-invalid="true"]{border-color:#c04b4b}
+.et-checkout-field small{color:#a63030;font-size:11px;font-weight:500;line-height:1.4}
+.et-checkout-privacy{display:flex;flex-direction:column;gap:12px;background:#f5f9fe;border:1px solid #e0ecf8;border-radius:14px;padding:16px}
+.et-checkout-privacy label{display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.45;color:#294d71;font-weight:500;cursor:pointer}
+.et-checkout-privacy label input{accent-color:#003A70;width:18px;height:18px;flex:0 0 18px;margin-top:1px}
+.et-checkout-privacy>p{display:flex;gap:7px;align-items:flex-start;font-size:11px;line-height:1.5;color:#6c829c}
+.et-checkout-privacy>p svg{flex:0 0 15px}
+.et-checkout-privacy .et-checkout-consent-error{color:#b43636;font-weight:700}
+.et-checkout-footer{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #e3edf7;padding-top:21px}
+.et-checkout-footer button{display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 17px;border-radius:12px;font:700 13px/1.2 Inter,Arial,sans-serif}
+.et-checkout-back{background:#eaf2fb;color:#003A70;border:1px solid #d7e5f4}
+.et-checkout-submit{background:#FFCB05;color:#003A70;border:1px solid #E4B200;flex:1}
+.et-checkout-head button:not(:disabled):hover,.et-checkout-back:not(:disabled):hover,.et-checkout-submit:not(:disabled):hover{background:#003A70;color:white;border-color:#003A70}
+.et-checkout-head button:focus-visible,.et-checkout-footer button:focus-visible,.et-checkout-privacy input:focus-visible{outline:3px solid #3D7DCA;outline-offset:3px}
+.et-checkout-footer button:disabled{opacity:.6;cursor:wait}
+.et-checkout-footer>p{flex:1 0 100%;font-size:11px;color:#71869d;line-height:1.45}
+@media(max-width:600px){.et-checkout-backdrop{padding:0;align-items:stretch}.et-checkout-panel{width:100%;max-height:100dvh;border-radius:0}.et-checkout-head{padding:calc(18px + env(safe-area-inset-top,0px)) 18px 16px}.et-checkout-form{padding:18px 16px calc(20px + env(safe-area-inset-bottom,0px));gap:20px}.et-checkout-grid{gap:12px 10px}.et-checkout-head p{font-size:12px}.et-checkout-footer button{flex:1 0 100%;width:100%}}
+@media(max-width:380px){.et-checkout-grid{grid-template-columns:1fr}.et-checkout-wide{grid-column:auto}}
+@media(prefers-reduced-motion:reduce){.et-checkout-field input{transition:none}}

@@ -16,15 +16,19 @@ test("Mantém hero existente e inclui banner antes do footer",()=>{
 });
 test("Banner tem Pokébola, foto local e ambos os links funcionais",()=>{
   assert.ok(ui.includes('src="/brand/pokeball-horizontal-v2.svg"'));
-  assert.match(ui,/edutrainer-pokebola-photo\.avif/);
+  assert.match(ui,/edutrainer-collector-photo-hd-v2\.avif/);
   assert.match(ui,/href="#catalogo"/);
   assert.match(ui,/et-collector-secondary" href=\{CONTACT_URL\}/);
-  assert.match(ui,/Imagem ilustrativa/);
+  assert.doesNotMatch(ui,/et-collector-caption|Imagem ilustrativa · confira as fotos individuais/);
+  const photo=readFileSync(new URL("../public/banners/edutrainer-collector-photo-hd-v2.avif",import.meta.url));
+  assert.ok(photo.length>120000,"Imagem HD deve ter mais qualidade que a antiga versão de 5,8 KB");
+  assert.equal(photo.toString("ascii",4,8),"ftyp");
   assert.match(layout,/collector-banner\.css/);
 });
 test("Responsividade mobile e foco de teclado",()=>{
   assert.match(css,/@media\(max-width:600px\)/);
   assert.match(css,/flex-direction:column/);
+  assert.match(css,/aspect-ratio:1094\/701/);
   assert.match(css,/min-height:44px/);
   assert.match(css,/focus-visible/);
   assert.match(css,/prefers-reduced-motion/);

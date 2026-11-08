@@ -192,12 +192,11 @@ export default function CatalogApp() {
         </div>
         <div className="et-collector-visual">
           <img
-            src="/banners/edutrainer-pokebola-photo.avif"
-            width="520" height="313" loading="lazy" decoding="async"
-            alt="Imagem ilustrativa de fichário com cartas Pokémon Shiny e colecionador segurando uma carta Lucario"
+            src="/banners/edutrainer-collector-photo-hd-v2.avif"
+            width="1094" height="701" loading="lazy" decoding="async"
+            alt="Fichário aberto com cartas Pokémon Shiny, enquanto uma mão segura uma carta de Lucario"
             onError={event => {event.currentTarget.onerror=null;event.currentTarget.src="/cards/shiny/lucario-174-091-front.webp";}}
           />
-          <span className="et-collector-caption">Imagem ilustrativa · confira as fotos individuais no catálogo</span>
         </div>
       </section>
     </main>

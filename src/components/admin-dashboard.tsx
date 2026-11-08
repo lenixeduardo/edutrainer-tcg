@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, Check, Eye, EyeOff, ImagePlus, LayoutGrid, LogOut, Package, Pencil, Plus, Search, Shield, Trash2, X } from "lucide-react";
 import type { Product, Category, Language, Condition, Finish } from "@/lib/types";
 import { money, parsePrice } from "@/lib/business";
+import { minimumSalePrice } from "@/lib/selling-policy";
 import { loadProducts, saveProduct, uploadPhoto } from "@/lib/catalog";
 import { isDemo, supabase } from "@/lib/supabase";
 
@@ -81,6 +82,8 @@ export default function AdminDashboard() {
     const price = parsePrice(priceInput);
     if (!draft.name.trim() || !draft.set_name.trim() || !draft.card_number.trim()) { setError("Nome, coleção e numeração são obrigatórios."); return; }
     if (price === null) { setError("Preço inválido. Use por exemplo 49,90."); return; }
+    const floor=minimumSalePrice(draft);
+    if (floor !== null && price>0 && price<floor) { setError(`Preço mínimo permitido para este exemplar: ${money(floor)}. Valor menor não respeita a margem comercial.`); return; }
     if (!Number.isInteger(draft.stock) || draft.stock < 0 || draft.stock > 99999) { setError("Informe uma quantidade válida de estoque."); return; }
     setBusy(true);
     try {

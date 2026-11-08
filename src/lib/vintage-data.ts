@@ -1,5 +1,7 @@
 import type { Product } from "./types";
-/** Fotografias do responsável pelo catálogo. NM informado, não autenticado por inspeção do verso. */
+/** Fotos enviadas pelo vendedor; condição conforme declaração/compra, não atestada por inspeção do verso.
+ * Valores de anúncio não são equivalentes às cotações de referência do MYP.
+ */
 export const VINTAGE_PRODUCTS: Product[] = [
   {
     "id": "ebfb7e64-d958-5ec5-bcca-3ccd811a5301",
@@ -27,7 +29,7 @@ export const VINTAGE_PRODUCTS: Product[] = [
     "condition": "NM",
     "finish": "Normal",
     "rarity": "Rare",
-    "price_cents": 13000,
+    "price_cents": 16490,
     "stock": 1,
     "front_url": "/cards/vintage/mewtwo-051-108.webp",
     "back_url": "",
@@ -75,7 +77,7 @@ export const VINTAGE_PRODUCTS: Product[] = [
     "condition": "NM",
     "finish": "Normal",
     "rarity": "Uncommon",
-    "price_cents": 1000,
+    "price_cents": 5990,
     "stock": 1,
     "front_url": "/cards/vintage/mistys-determination-080-108.webp",
     "back_url": "",
@@ -107,7 +109,7 @@ export const VINTAGE_PRODUCTS: Product[] = [
     "condition": "NM",
     "finish": "Normal",
     "rarity": "Secret Rare",
-    "price_cents": 0,
+    "price_cents": 7990,
     "stock": 1,
     "front_url": "/cards/vintage/here-comes-team-rocket-113-108.webp",
     "back_url": "",
@@ -171,7 +173,7 @@ export const VINTAGE_PRODUCTS: Product[] = [
     "condition": "NM",
     "finish": "Normal",
     "rarity": "Common",
-    "price_cents": 5000,
+    "price_cents": 7990,
     "stock": 1,
     "front_url": "/cards/vintage/pikachu-035-108.webp",
     "back_url": "",
@@ -235,8 +237,8 @@ export const VINTAGE_PRODUCTS: Product[] = [
     "condition": "NM",
     "finish": "Normal",
     "rarity": "Common",
-    "price_cents": 800,
-    "stock": 2,
+    "price_cents": 3490,
+    "stock": 1,
     "front_url": "/cards/vintage/gastly-047-108.webp",
     "back_url": "",
     "is_published": true
@@ -248,10 +250,10 @@ export const VINTAGE_PRODUCTS: Product[] = [
     "card_number": "114/132",
     "category": "Vintage",
     "language": "Inglês",
-    "condition": "NM",
+    "condition": "HP",
     "finish": "Normal",
     "rarity": "Uncommon",
-    "price_cents": 0,
+    "price_cents": 8490,
     "stock": 1,
     "front_url": "/cards/vintage/mistys-wrath-114-132.webp",
     "back_url": "",
@@ -264,10 +266,10 @@ export const VINTAGE_PRODUCTS: Product[] = [
     "card_number": "123/132",
     "category": "Vintage",
     "language": "Inglês",
-    "condition": "NM",
+    "condition": "SP",
     "finish": "Normal",
     "rarity": "Common",
-    "price_cents": 0,
+    "price_cents": 10990,
     "stock": 1,
     "front_url": "/cards/vintage/mistys-duel-123-132.webp",
     "back_url": "",

@@ -1,9 +1,15 @@
 import type { Product } from "./types";
 import { DEMO_PRODUCTS } from "./demo-data";
 import { isDemo, supabase } from "./supabase";
+import { enforcePriceFloor, minimumSalePrice, priceBelowPolicy } from "./selling-policy";
 
-const KEY = "edutrainer:demo-products:v6";
-const LEGACY_KEYS = ["edutrainer:demo-products:v5", "edutrainer:demo-products:v4", "edutrainer:demo-products:v3", "edutrainer:demo-products:v2", "edutrainer:demo-products:v1"] as const;
+const protectedItemPrice = (seed:Product, oldPrice:number):number => {
+  const floor=minimumSalePrice(seed);
+  return floor !== null ? Math.max(floor,seed.price_cents,Number.isFinite(oldPrice)?oldPrice:0) : oldPrice;
+};
+
+const KEY = "edutrainer:demo-products:v7";
+const LEGACY_KEYS = ["edutrainer:demo-products:v6", "edutrainer:demo-products:v5", "edutrainer:demo-products:v4", "edutrainer:demo-products:v3", "edutrainer:demo-products:v2", "edutrainer:demo-products:v1"] as const;
 
 export async function loadProducts(): Promise<Product[]> {
   if (isDemo) {
@@ -12,7 +18,7 @@ export async function loadProducts(): Promise<Product[]> {
       const saved = localStorage.getItem(KEY);
       if (saved) {
         const parsed: unknown = JSON.parse(saved);
-        return Array.isArray(parsed) ? parsed as Product[] : DEMO_PRODUCTS;
+        return Array.isArray(parsed) ? (parsed as Product[]).map(enforcePriceFloor) : DEMO_PRODUCTS;
       }
       const legacy = LEGACY_KEYS.map(key => localStorage.getItem(key)).find(value => value !== null);
       if (!legacy) return DEMO_PRODUCTS;
@@ -20,7 +26,7 @@ export async function loadProducts(): Promise<Product[]> {
       const previous = Array.isArray(old) ? old.filter((item): item is Product => Boolean(item && typeof item.id === "string")) : [];
       const merged: Product[] = DEMO_PRODUCTS.map(seed => {
         const saved = previous.find(item => item.id === seed.id);
-        return saved ? { ...seed, price_cents: saved.price_cents, stock: saved.stock, is_published: saved.is_published } : seed;
+        return saved ? enforcePriceFloor({ ...seed, price_cents: protectedItemPrice(seed, saved.price_cents), stock: saved.stock, is_published: saved.is_published }) : seed;
       });
       for (const oldProduct of previous) if (!merged.some(item => item.id === oldProduct.id)) merged.push(oldProduct);
       localStorage.setItem(KEY, JSON.stringify(merged));
@@ -35,6 +41,7 @@ export async function loadProducts(): Promise<Product[]> {
 }
 
 export async function saveProduct(product: Product): Promise<void> {
+  if (priceBelowPolicy(product)) throw new Error("Preço abaixo do mínimo autorizado para este produto. Não é permitido vender com margem inferior à política comercial.");
   if (isDemo) {
     const items = await loadProducts();
     const index = items.findIndex(item => item.id === product.id);

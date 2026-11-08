@@ -6,6 +6,7 @@ import CardDetailViewer from "./card-detail-viewer";
 import CustomerCheckout from "./customer-checkout";
 import { customerWhatsAppMessage, type CheckoutCustomer } from "@/lib/checkout";
 import { getCardReference } from "@/lib/card-reference";
+import { priceBelowPolicy } from "@/lib/selling-policy";
 import {
   ArrowLeft, ArrowRight, Check, ChevronDown, Heart, Menu, Minus, Plus,
   Search, ShieldCheck, ShoppingBag, SlidersHorizontal, Sparkles, Trash2, Truck, X,
@@ -125,6 +126,8 @@ export default function CatalogApp() {
         alert("O estoque mudou. O carrinho foi atualizado; confira antes de continuar.");
         return;
       }
+      const belowFloor=current.find(product => (reconciled[product.id] || 0)>0 && priceBelowPolicy(product));
+      if (belowFloor) { alert(`O preço de ${belowFloor.name} exige revisão antes de enviar o pedido.`); return; }
       const url = whatsAppUrl(PHONE, customerWhatsAppMessage(reconciled, current, customer));
       if (!url) { alert("Não foi possível gerar o link do WhatsApp. Copie o pedido para enviar manualmente."); return; }
       window.location.assign(url);

@@ -13,7 +13,8 @@
     "test:delivery2": "node --test tests/delivery-two.test.mjs",
     "test:vintage": "node --test tests/vintage-catalog.test.mjs",
     "test:vintage-hd": "node --test tests/vintage-hd-reference.test.mjs",
-    "test:checkout": "node --test tests/checkout-customer.test.mjs"
+    "test:checkout": "node --test tests/checkout-customer.test.mjs",
+    "test:margin": "node --test tests/min-profit-policy.test.mjs"
   },
   "dependencies": {
     "next": "16.4.5",

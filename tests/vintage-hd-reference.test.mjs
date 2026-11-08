@@ -3,7 +3,8 @@ import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
 const read=p=>readFileSync(new URL("../"+p,import.meta.url),"utf8");
 const ref=read("src/lib/card-reference.ts");
-const vintage=JSON.parse(read("src/lib/vintage-data.ts").split("= [")[1].split("];")[0].replace(/^/,"["));
+const source=read("src/lib/vintage-data.ts");
+const vintage=JSON.parse(source.slice(source.indexOf("= [")+2,source.lastIndexOf("]")+1));
 test("24 imagens HD com id da edição e número do anúncio",()=>{
  const names={Evolutions:"xy12","Gym Heroes":"gym1","Neo Revelation":"neo3","Base Set":"base1"};
  assert.equal(vintage.length,24);

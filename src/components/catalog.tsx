@@ -3,6 +3,8 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import CardDetailViewer from "./card-detail-viewer";
+import CustomerCheckout from "./customer-checkout";
+import { customerWhatsAppMessage, type CheckoutCustomer } from "@/lib/checkout";
 import { getCardReference } from "@/lib/card-reference";
 import {
   ArrowLeft, ArrowRight, Check, ChevronDown, Heart, Menu, Minus, Plus,
@@ -69,6 +71,7 @@ export default function CatalogApp() {
   const [selected, setSelected] = useState<Product | null>(null);
   const [notice, setNotice] = useState("");
   const [sending, setSending] = useState(false);
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
 
   useEffect(() => {
@@ -78,11 +81,11 @@ export default function CatalogApp() {
   useEffect(() => { if (loaded) { try { localStorage.setItem(CART_KEY, JSON.stringify(cart)); } catch { /* armazenamento cheio */ } } }, [cart, loaded]);
   useEffect(() => { if (loaded) setCart(current => reconcileCart(current, products)); }, [products, loaded]);
   useEffect(() => {
-    const onEscape = (event: KeyboardEvent) => { if (event.key === "Escape" && !document.querySelector('[data-zoom-open="true"]')) { setSelected(null); setCartOpen(false); setMobileMenu(false); } };
+    const onEscape = (event: KeyboardEvent) => { if (event.key === "Escape" && !checkoutOpen && !document.querySelector('[data-zoom-open="true"]')) { setSelected(null); setCartOpen(false); setMobileMenu(false); } };
     window.addEventListener("keydown", onEscape);
     return () => window.removeEventListener("keydown", onEscape);
-  }, []);
-  useEffect(() => { document.body.style.overflow = cartOpen || selected ? "hidden" : ""; return () => { document.body.style.overflow = ""; }; }, [cartOpen, selected]);
+  }, [checkoutOpen]);
+  useEffect(() => { document.body.style.overflow = cartOpen || selected || checkoutOpen ? "hidden" : ""; return () => { document.body.style.overflow = ""; }; }, [cartOpen, selected, checkoutOpen]);
 
   const collections = useMemo(() => [...new Set(products.map(item => item.set_name))].sort((a,b) => a.localeCompare(b)), [products]);
   const filtered = useMemo(() => products.filter(item => {
@@ -110,7 +113,7 @@ export default function CatalogApp() {
     try { await navigator.clipboard.writeText(whatsAppMessage(cart, products)); alert("Resumo do pedido copiado."); }
     catch { alert("Não foi possível copiar. Tente novamente em uma conexão segura."); }
   };
-  const sendOrder = async () => {
+  const sendOrder = async (customer: CheckoutCustomer) => {
     if (!count || sending) return;
     setSending(true);
     try {
@@ -122,7 +125,7 @@ export default function CatalogApp() {
         alert("O estoque mudou. O carrinho foi atualizado; confira antes de continuar.");
         return;
       }
-      const url = whatsAppUrl(PHONE, whatsAppMessage(reconciled, current));
+      const url = whatsAppUrl(PHONE, customerWhatsAppMessage(reconciled, current, customer));
       if (!url) { alert("Não foi possível gerar o link do WhatsApp. Copie o pedido para enviar manualmente."); return; }
       window.location.assign(url);
     } catch { alert("Não foi possível confirmar o estoque. Tente novamente."); }
@@ -163,6 +166,7 @@ export default function CatalogApp() {
 
     {selected && <div className="overlay" role="presentation" onMouseDown={e => { if (e.target === e.currentTarget) setSelected(null); }}><section className="product-modal" role="dialog" aria-modal="true" aria-label={`Detalhes da carta ${selected.name}`}><button type="button" className="modal-close" onClick={() => setSelected(null)} aria-label="Fechar"><X size={20}/></button><div className="modal-photo"><CardDetailViewer key={selected.id} product={selected}/></div><div className="modal-details"><span className="section-eyebrow"><span className="orange-dash"/> DETALHES DA CARTA</span><h2>{selected.name}</h2><p className="modal-set">{selected.set_name} · {selected.card_number}</p><div className="tag-row"><span>{selected.condition}</span><span>{selected.language}</span><span>{selected.finish}</span></div><div className="product-info-rows"><div><span>Raridade</span><strong>{selected.rarity || "Não informada"}</strong></div><div><span>Condição</span><strong>{selected.condition} (informada pelo vendedor)</strong></div><div><span>Disponibilidade</span><strong>{isDemo ? "A confirmar antes da compra" : selected.stock > 0 ? `${selected.stock} ${selected.stock === 1 ? "unidade" : "unidades"}` : "Esgotado"}</strong></div></div><div className="modal-pricing"><small>Valor por unidade</small><strong>{selected.price_cents > 0 ? money(selected.price_cents) : "Sob consulta"}</strong></div>{selected.price_cents <= 0 ? <a className="primary-button" href={whatsAppUrl(PHONE, `Olá! Gostaria de consultar o preço NM de ${selected.name} (${selected.set_name}, ${selected.card_number}) no EduTrainer TCG.`) || "#"} target="_blank" rel="noopener noreferrer"><ExternalLink size={19}/> Consultar preço no WhatsApp</a> : <button className="primary-button" type="button" disabled={selected.stock === 0} onClick={() => { add(selected); setSelected(null); setCartOpen(true); }}><ShoppingBag size={19}/>{selected.stock > 0 ? "Adicionar ao carrinho" : "Produto esgotado"}<ArrowRight size={17}/></button>}<p className="modal-disclaimer">Arte digital e imagens enviadas são fontes distintas; nenhuma delas certifica a condição física. Condição NM informada pelo vendedor, não certificada; confirme fotos individuais do exemplar e disponibilidade antes de comprar.</p></div></section></div>}
 
-    {cartOpen && <div className="drawer-overlay" role="presentation" onMouseDown={e => { if (e.target === e.currentTarget) setCartOpen(false); }}><aside className="cart-drawer" aria-label="Meu carrinho" role="dialog" aria-modal="true"><div className="drawer-head"><div><span className="section-eyebrow"><span className="orange-dash"/> SUA SELEÇÃO</span><h2>Meu carrinho<span className="heading-period">.</span></h2></div><button type="button" aria-label="Fechar carrinho" onClick={() => setCartOpen(false)}><X size={23}/></button></div><div className="cart-scroll">{itemsInCart.length ? itemsInCart.map(product => <div key={product.id} className="cart-line"><div className="cart-line-img"><ProductVisual product={product}/></div><div className="cart-line-info"><p>{product.name}</p><span>{product.card_number} · {product.condition} · {product.language}</span><strong>{money(product.price_cents)}</strong><div className="qty-control"><button type="button" aria-label={`Retirar uma unidade de ${product.name}`} onClick={() => setCart(current => updateCart(current, product, -1))}><Minus size={13}/></button><span>{cart[product.id]}</span><button type="button" aria-label={`Adicionar uma unidade de ${product.name}`} disabled={cart[product.id] >= product.stock} onClick={() => setCart(current => updateCart(current, product, 1))}><Plus size={13}/></button></div></div><button type="button" className="remove-line" aria-label={`Remover ${product.name} do carrinho`} onClick={() => setCart(current => { const copy = { ...current }; delete copy[product.id]; return copy; })}><Trash2 size={16}/></button></div>) : <div className="empty-cart"><ShoppingBag size={35}/><h3>Seu carrinho está vazio</h3><p>Explore o catálogo e adicione as cartas que deseja consultar.</p><button type="button" onClick={() => setCartOpen(false)}>Continuar explorando <ArrowRight size={16}/></button></div>}</div>{itemsInCart.length > 0 && <div className="drawer-bottom"><div className="subtotal-row"><span>Subtotal ({count} {count === 1 ? "carta" : "cartas"})</span><strong>{money(total)}</strong></div><p>Frete calculado na conversa. O envio não reserva automaticamente o estoque.</p><button className="primary-button whatsapp-button" type="button" onClick={sendOrder} disabled={sending || !PHONE}>{sending ? "Validando estoque..." : PHONE ? "Enviar pedido no WhatsApp" : "WhatsApp não configurado"}<ArrowRight size={18}/></button><button type="button" className="secondary-button" onClick={copyOrder}><Copy size={16}/> Copiar resumo do pedido</button></div>}</aside></div>}
+    {cartOpen && <div className="drawer-overlay" role="presentation" onMouseDown={e => { if (e.target === e.currentTarget) setCartOpen(false); }}><aside className="cart-drawer" aria-label="Meu carrinho" role="dialog" aria-modal="true"><div className="drawer-head"><div><span className="section-eyebrow"><span className="orange-dash"/> SUA SELEÇÃO</span><h2>Meu carrinho<span className="heading-period">.</span></h2></div><button type="button" aria-label="Fechar carrinho" onClick={() => setCartOpen(false)}><X size={23}/></button></div><div className="cart-scroll">{itemsInCart.length ? itemsInCart.map(product => <div key={product.id} className="cart-line"><div className="cart-line-img"><ProductVisual product={product}/></div><div className="cart-line-info"><p>{product.name}</p><span>{product.card_number} · {product.condition} · {product.language}</span><strong>{money(product.price_cents)}</strong><div className="qty-control"><button type="button" aria-label={`Retirar uma unidade de ${product.name}`} onClick={() => setCart(current => updateCart(current, product, -1))}><Minus size={13}/></button><span>{cart[product.id]}</span><button type="button" aria-label={`Adicionar uma unidade de ${product.name}`} disabled={cart[product.id] >= product.stock} onClick={() => setCart(current => updateCart(current, product, 1))}><Plus size={13}/></button></div></div><button type="button" className="remove-line" aria-label={`Remover ${product.name} do carrinho`} onClick={() => setCart(current => { const copy = { ...current }; delete copy[product.id]; return copy; })}><Trash2 size={16}/></button></div>) : <div className="empty-cart"><ShoppingBag size={35}/><h3>Seu carrinho está vazio</h3><p>Explore o catálogo e adicione as cartas que deseja consultar.</p><button type="button" onClick={() => setCartOpen(false)}>Continuar explorando <ArrowRight size={16}/></button></div>}</div>{itemsInCart.length > 0 && <div className="drawer-bottom"><div className="subtotal-row"><span>Subtotal ({count} {count === 1 ? "carta" : "cartas"})</span><strong>{money(total)}</strong></div><p>Frete calculado na conversa. O envio não reserva automaticamente o estoque.</p><button className="primary-button whatsapp-button" type="button" onClick={() => setCheckoutOpen(true)} disabled={sending || !PHONE}>{sending ? "Validando estoque..." : PHONE ? "Informar dados e continuar" : "WhatsApp não configurado"}<ArrowRight size={18}/></button><button type="button" className="secondary-button" onClick={copyOrder}><Copy size={16}/> Copiar resumo do pedido</button></div>}</aside></div>}
+    {checkoutOpen && <CustomerCheckout count={count} submitting={sending} onClose={() => setCheckoutOpen(false)} onSubmit={sendOrder} />}
   </div>;
 }

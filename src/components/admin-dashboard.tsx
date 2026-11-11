@@ -21,7 +21,7 @@ const conditions: Condition[] = ["NM", "SP", "MP", "HP"];
 const finishes: Finish[] = ["Normal", "Foil", "Reverse Foil"];
 
 export default function AdminDashboard() {
-  const [authState, setAuthState] = useState<"checking" | "login" | "ready" | "denied">(isDemo ? "ready" : "checking");
+  const [authState, setAuthState] = useState<"checking" | "login" | "ready" | "denied">(isDemo ? "login" : "checking");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [authBusy, setAuthBusy] = useState(false);
@@ -37,7 +37,7 @@ export default function AdminDashboard() {
   const [backFile, setBackFile] = useState<File | null>(null);
 
   async function checkAdmin() {
-    if (isDemo) { setAuthState("ready"); return; }
+    if (isDemo) { setAuthState("login"); return; }
     const db = supabase()!;
     const { data: { user }, error: userError } = await db.auth.getUser();
     if (userError || !user) { setAuthState("login"); return; }
@@ -56,8 +56,14 @@ export default function AdminDashboard() {
 
   async function signIn(event: FormEvent<HTMLFormElement>) {
     event.preventDefault(); setError(""); setAuthBusy(true);
+    if (isDemo) {
+      if (password === "7467") { setAuthState("ready"); setPassword(""); }
+      else setError("Senha de acesso incorreta.");
+      setAuthBusy(false);
+      return;
+    }
     const db = supabase();
-    if (!db) return;
+    if (!db) { setAuthBusy(false); return; }
     const { error: loginError } = await db.auth.signInWithPassword({ email, password });
     if (loginError) { setError("Não foi possível entrar. Verifique suas credenciais."); setAuthBusy(false); return; }
     await checkAdmin(); setAuthBusy(false);
@@ -113,7 +119,7 @@ export default function AdminDashboard() {
   const units = items.reduce((a, item) => a + item.stock, 0);
 
   if (authState === "checking") return <div className="admin-auth-shell"><p>Verificando acesso ao painel...</p></div>;
-  if (authState === "login" || authState === "denied") return <div className="admin-auth-shell"><Link href="/" className="back-link"><ArrowLeft size={16}/> Voltar ao catálogo</Link><div className="admin-login"><img className="admin-logo" src="/brand/pokeball-mark-v2.svg" alt="" /><span className="section-eyebrow"><span className="orange-dash"/> ACESSO RESTRITO</span><h1>Área do vendedor<span className="heading-period">.</span></h1><p>Entre com a conta autorizada para gerenciar as cartas da EduTrainer TCG.</p>{error && <div className="error-box">{error}</div>}{authState === "denied" ? <><p className="denied">Esta conta não está na lista de administradores.</p><button className="secondary-button" onClick={signOut}>Sair desta conta</button></> : <form onSubmit={signIn}><label>E-mail<input type="email" required value={email} onChange={e => setEmail(e.target.value)} placeholder="seu@email.com" autoComplete="username" /></label><label>Senha<input type="password" required value={password} onChange={e => setPassword(e.target.value)} placeholder="Sua senha" autoComplete="current-password" /></label><button type="submit" className="primary-button" disabled={authBusy}>{authBusy ? "Entrando..." : "Entrar no painel"}<ArrowRight size={16}/></button></form>}</div></div>;
+  if (authState === "login" || authState === "denied") return <div className="admin-auth-shell"><Link href="/" className="back-link"><ArrowLeft size={16}/> Voltar ao catálogo</Link><div className="admin-login"><img className="admin-logo" src="/brand/pokeball-mark-v2.svg" alt="" /><span className="section-eyebrow"><span className="orange-dash"/> ACESSO RESTRITO</span><h1>Área do vendedor<span className="heading-period">.</span></h1><p>{isDemo ? "Informe a senha de acesso ao painel demonstrativo." : "Entre com a conta autorizada para gerenciar as cartas da EduTrainer TCG."}</p>{error && <div className="error-box">{error}</div>}{authState === "denied" ? <><p className="denied">Esta conta não está na lista de administradores.</p><button className="secondary-button" onClick={signOut}>Sair desta conta</button></> : <form onSubmit={signIn}>{!isDemo && <label>E-mail<input type="email" required value={email} onChange={e => setEmail(e.target.value)} placeholder="seu@email.com" autoComplete="username" /></label>}<label>Senha<input type="password" required value={password} onChange={e => setPassword(e.target.value)} placeholder="Senha de acesso" autoComplete="current-password" /></label><button type="submit" className="primary-button" disabled={authBusy}>{authBusy ? "Entrando..." : "Entrar no painel"}<ArrowRight size={16}/></button></form>}</div></div>;
 
   return <div className="admin-app"><aside className="admin-sidebar"><Link className="admin-brand" href="/"><img className="admin-logo" src="/brand/pokeball-mark-v2.svg" alt="" /><span>EDUTRAINER TCG<small>PAINEL DO VENDEDOR</small></span></Link><div className="sidebar-label">GERENCIAMENTO</div><div className="side-active"><LayoutGrid size={19}/> Catálogo</div><Link href="/"><Eye size={18}/> Ver loja</Link><div className="sidebar-spacer"/><div className="sidebar-legend"><Shield size={18}/><span>Administração com controle de acesso</span></div><button type="button" onClick={signOut}><LogOut size={18}/> Sair</button></aside><div className="admin-main"><header className="admin-header"><div><span>EDUTRAINER TCG</span><strong>Visão geral do catálogo</strong></div><div className="admin-header-right"><Link href="/" target="_blank"><Eye size={17}/> Abrir loja</Link><span className="admin-avatar">ET</span></div></header>
     <main className="admin-content">{isDemo && <div className="admin-demo-banner"><strong>Dados locais do painel</strong> — As alterações feitas aqui são salvas somente neste navegador e não aparecem para outros clientes. Para gerenciar o catálogo de forma compartilhada, configure a integração com o banco de dados.</div>}

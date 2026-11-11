@@ -24,14 +24,14 @@ const CONTACT_URL = whatsAppUrl(PHONE, "Olá! Gostaria de consultar cartas do ca
 type SortBy = "featured" | "price-asc" | "price-desc" | "name";
 
 function ProductVisual({ product, side = "front", className = "" }: { product: Product; side?: "front" | "back"; className?: string }) {
-  const [referenceFailed,setReferenceFailed]=useState(false);
-  const ref=side==="front" ? getCardReference(product) : null;
-  const useArt=Boolean(ref&&!referenceFailed);
-  const src=useArt ? ref!.url : side==="front" ? product.front_url : product.back_url;
+  const ref = side === "front" ? getCardReference(product) : null;
+  const photo = side === "front" ? product.front_url : product.back_url;
+  const [fallback, setFallback] = useState(false);
+  const src = fallback ? ref?.url || "" : photo || ref?.url || "";
   return <div className={`card-visual ${className}`}>
     {src ? <img src={src} loading="lazy"
-      alt={useArt ? `Arte digital ${ref!.language} de ${product.name} ${product.card_number}, não foto do exemplar NM` : `Imagem enviada de ${product.name}, ${side==="front"?"frente":"verso"}`}
-      onError={() => { if(useArt)setReferenceFailed(true); }} /> :
+      alt={`${product.name} ${product.card_number} — ${fallback || !photo ? "imagem de referência" : side === "front" ? "foto frontal" : "foto do verso"}`}
+      onError={() => setFallback(true)} /> :
       <div className="no-card-image"><span>Imagem não cadastrada</span></div>}
   </div>;
 }
@@ -76,7 +76,7 @@ export default function CatalogApp() {
 
   useEffect(() => {
     try { const saved = localStorage.getItem(CART_KEY); if (saved) setCart(JSON.parse(saved) as Cart); } catch { /* carrinho vazio */ }
-    loadProducts().then(items => { setProducts(items.filter(item => item.is_published)); setLoaded(true); }).catch(e => { setError(e.message); setLoaded(true); });
+    loadProducts().then(items => { setProducts(items.filter(item => item.is_published && !["zapdos", "applin"].includes(item.name.toLowerCase().trim().split(" ")[0]))); setLoaded(true); }).catch(e => { setError(e.message); setLoaded(true); });
   }, []);
   useEffect(() => { if (loaded) { try { localStorage.setItem(CART_KEY, JSON.stringify(cart)); } catch { /* armazenamento cheio */ } } }, [cart, loaded]);
   useEffect(() => { if (loaded) setCart(current => reconcileCart(current, products)); }, [products, loaded]);
@@ -117,7 +117,7 @@ export default function CatalogApp() {
     if (!count || sending) return;
     setSending(true);
     try {
-      const current = (await loadProducts()).filter(item => item.is_published);
+      const current = (await loadProducts()).filter(item => item.is_published && !["zapdos", "applin"].includes(item.name.toLowerCase().trim().split(" ")[0]));
       const reconciled = reconcileCart(cart, current);
       setProducts(current);
       if (JSON.stringify(Object.entries(reconciled).sort()) !== JSON.stringify(Object.entries(cart).sort())) {

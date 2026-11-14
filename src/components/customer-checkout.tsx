@@ -1,6 +1,7 @@
 "use client";
 import {useEffect,useRef,useState,type FormEvent} from "react";
-import {ArrowLeft,ArrowRight,LockKeyhole,X} from "lucide-react";
+import {ArrowLeft,LockKeyhole,X} from "lucide-react";
+import CatalogIcon from "./catalog-icon";
 import {
   cleanCheckoutCustomer,CUSTOMER_STORAGE_KEY,EMPTY_CUSTOMER,
   validateCheckoutCustomer,type CheckoutCustomer,type CheckoutErrors
@@ -123,7 +124,7 @@ export default function CustomerCheckout({count,submitting,onClose,onSubmit}:Pro
         </div>
         <div className="et-checkout-footer">
           <button type="button" className="et-checkout-back" onClick={onClose} disabled={submitting}><ArrowLeft size={17}/> Voltar ao carrinho</button>
-          <button type="submit" className="et-checkout-submit" disabled={submitting}>{submitting?"Conferindo estoque...":"Continuar no WhatsApp"}<ArrowRight size={17}/></button>
+          <button type="submit" className="et-checkout-submit" disabled={submitting}>{submitting?"Conferindo estoque...":"Continuar no WhatsApp"}<CatalogIcon name="whatsappOrders" size={18}/></button>
           <p>O pedido só será enviado ao confirmar a mensagem no WhatsApp. Nenhum pagamento ou reserva ocorre nesta etapa.</p>
         </div>
       </form>

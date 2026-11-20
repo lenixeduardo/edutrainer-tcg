@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vira à Noite — Visualizador 3D (prévia)</title>
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js"></script>
+<style>body{margin:0;background:#fafafa;color:#151515;font:16px system-ui}main{max-width:720px;margin:auto;padding:24px}model-viewer{width:100%;height:min(72vh,700px);background:linear-gradient(#f8a3c5,#e45a99);border-radius:20px}input{width:100%;padding:12px;box-sizing:border-box}small{color:#555}</style></head>
+<body><main><h1>Vira à Noite — Produto 360°</h1><p>Prévia local. Nenhum produto será publicado.</p>
+<label for="url">URL HTTPS do modelo GLB aprovado</label><input id="url" type="url" placeholder="https://.../bong-barbie.glb">
+<model-viewer id="viewer" camera-controls shadow-intensity="1" exposure="1" interaction-prompt="auto" alt="Modelo tridimensional do produto"></model-viewer>
+<small>Arraste para girar 360°. Use pinça ou rolagem para zoom. O modelo só aparece após informar um GLB válido.</small></main>
+<script>const input=document.getElementById("url");const viewer=document.getElementById("viewer");input.addEventListener("change",()=>{try{const u=new URL(input.value);if(u.protocol!=="https:")throw Error();viewer.src=u.href}catch{alert("Informe uma URL HTTPS válida")}})</script>
+</body></html>
